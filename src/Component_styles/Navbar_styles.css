@@ -18,7 +18,7 @@
     font-size: var(--fs-xl);
     padding: 0.7em 0.5em;
     margin: 0px 1rem;
-    color:#0a1931
+    color:#103271;
 }
 
 .links-cont{
@@ -34,10 +34,10 @@
     display: inline-block;
     text-decoration: none;
     font-size: var(--fs-base);
-    color:#103271;
+    color:#154ba1;
     font-weight: 700;
     padding: 2.2em 0.7em;
-    border-bottom: 4px solid #10327100;
+    border-bottom: 4px solid #154ba100;
     transition: all 0.3s;
 }
 
@@ -46,12 +46,12 @@
 }
 
 .links-cont  a:hover{
-    border-bottom: 4px solid #103271;
+    border-bottom: 4px solid #154ba1;
 }
 
 .mobile-nav{
     font-size: var(--fs-lg);
-    color:#103271;
+    color:#154ba1;
     display: none;
     margin: 0px 0.6rem;
     /* background-color: #0a1931; */
