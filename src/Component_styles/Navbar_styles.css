@@ -30,22 +30,22 @@
     align-items: center;
 }
 
-.navbar-cont  a{
+.links-cont  a{
     display: inline-block;
     text-decoration: none;
     font-size: var(--fs-base);
     color:#103271;
     font-weight: 700;
-    padding: 1.9em 0.7em;
+    padding: 2.2em 0.7em;
     border-bottom: 4px solid #10327100;
     transition: all 0.3s;
 }
 
-.navbar-cont  a:active{
+.links-cont  a:active{
     transform: scale(0.7);
 }
 
-.navbar-cont  a:hover{
+.links-cont  a:hover{
     border-bottom: 4px solid #103271;
 }
 
@@ -56,6 +56,7 @@
     margin: 0px 0.6rem;
     /* background-color: #0a1931; */
     padding: 1em 0.8em;
+    cursor: pointer;
 }
 
 #signup-btn{
@@ -68,6 +69,12 @@
     }
     .mobile-nav{
         display: block;
+    }
+}
+
+@media (min-width : 580px) {
+    .mobile-nav-cont{
+        display: none;
     }
 }
 

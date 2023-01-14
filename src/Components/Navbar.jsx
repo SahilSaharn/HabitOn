@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import '../Component_styles/Navbar_styles.css'
 
-import { FaHome , FaCompass , FaUserPlus , FaBars} from 'react-icons/fa';
-
+import { FaHome , FaCompass , FaUserPlus , FaBars ,FaTimesCircle} from 'react-icons/fa';
+import Mobilenav from './Mobilenav';
 import '../Component_styles/Navbar_styles.css';
 function Navbar() {
 
@@ -18,9 +18,11 @@ function Navbar() {
           <a href="/coke" id='signup-btn'> <span> <FaUserPlus/> Sign In/Up </span> </a>
         </div>
         <div className="mobile-nav" onClick={ () => setShowMobileNav( (prev)=> !prev ) } >
-          { showMobileNav ? <FaCompass/> : <FaBars/> }
+          { showMobileNav ? <FaTimesCircle/> : <FaBars/> }
         </div>
     </div>
+    
+    {showMobileNav && <Mobilenav/>}
   </>)
 
 }
