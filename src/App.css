@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+/* font-family: 'Sofia Sans', sans-serif; */
+
+/* weights :/ 
+    light -300
+    regular - 400
+    medium - 500
+    semibold -600
+    bold - 700
+    exbold - 800
+    we also have alll italics one...
+*/
+
+*{
+    margin    : 0;
+    padding   : 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f9f9f9;
+}
+#root{
+    max-width: 1920px;
+}
+/* font responsive sizes */
+:root{
+    --fs-esm: clamp(0.64rem, 0.14vw + 0.6rem, 0.77rem);
+    --fs-sm: clamp(0.8rem, 0.24vw + 0.74rem, 1.03rem);
+    --fs-base: clamp(1rem, 0.39vw + 0.9rem, 1.38rem);
+    --fs-md: clamp(1.25rem, 0.61vw + 1.1rem, 1.83rem);
+    --fs-lg: clamp(1.56rem, 0.93vw + 1.33rem, 2.44rem);
+    --fs-xl: clamp(1.95rem, 1.37vw + 1.61rem, 3.26rem);
+    --fs-2xl: clamp(2.44rem, 2vw + 1.94rem, 4.34rem);
+    --fs-3xl: clamp(3.05rem, 2.88vw + 2.33rem, 5.79rem);
+    --fs-4xl: clamp(3.81rem, 4.1vw + 2.79rem, 7.71rem);
+}
+
+.sofi{
+    font-family: 'Sofia Sans', sans-serif;
+}
