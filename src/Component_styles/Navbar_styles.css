@@ -71,7 +71,7 @@
     animation: scale-it 1s infinite;
 }
 
-@media (max-width : 580px) {
+@media (max-width : 596px) {
     .links-cont {
         display: none;
     }
@@ -81,7 +81,7 @@
     }
 }
 
-@media (min-width : 580px) {
+@media (min-width : 596px) {
     .mobile-nav-cont {
         display: none;
     }

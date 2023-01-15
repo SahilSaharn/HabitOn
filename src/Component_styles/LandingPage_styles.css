@@ -1,0 +1,120 @@
+.header-cont{
+    margin-top: 6rem;
+    display:flex;
+    justify-content : space-around;
+    align-items :center;
+    padding : 3em 2em;
+}
+
+.header-cont img{
+    width : 42%;
+    /* border :1px solid black; */
+    transition : all 0.5s;
+}
+
+.header-cont div{
+    position :realtive;
+}
+
+.header-cont div h1{
+    font-size :var(--fs-3xl);
+    color : #103271;
+    max-width : 33rem;
+    text-transform: capitalize;
+}
+
+#enter-now-btn{
+    display :inline-block;
+    background-color:#0a1931;
+    color: #f9f9f9;
+    padding :0.8em 1.2em;
+    font-size : var(--fs-base);
+    font-weight : bold;
+    text-decoration: none;
+    border-radius : 15px;
+    margin-top: 0.5rem;
+    transition :all 0.3s;
+}
+
+#enter-now-btn:hover{
+    background-color :#103271;
+    box-shadow : -5px 5px 0px #0a1930;
+    transform : translate(5px ,-5px);
+}
+
+.dark-bg-cont{
+    background-color: #0a1930;
+}
+
+.content-holder{
+    margin: 3rem 2.5rem;
+}
+
+.content-holder h3{
+    color :#f9f9f9;
+    font-size: var(--fs-2xl);
+}
+
+.content-holder p {
+    color :rgba(249, 249, 249, 0.8);
+    font-size: var(--fs-md);
+    padding: 0.5em 1em;
+    word-spacing: 5px;
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+
+@media (max-width :890px){
+    .header-cont div h1{
+        font-size :var(--fs-2xl);
+        max-width :21rem;
+    }
+    .header-cont{
+        margin-top:4.5rem;
+    }
+}
+
+@media (max-width : 596px) {
+    .header-cont{
+        display:flex;
+        flex-direction : column-reverse;
+        align-items:center;
+        justify-content:center;
+        margin-top :3rem;  
+    }
+    
+    .header-cont img{
+        width : 80%;
+        /* border :1px solid black; */
+    }
+
+    .header-cont div h1{
+        font-size :var(--fs-xl);
+        max-width :450px;
+        text-align :center;
+        /* background-color :red; */
+        padding:0.2em 0px;
+    }
+
+    #enter-now-btn{
+        font-size :var(--fs-base);
+    }
+
+    .header-cont div{
+        text-align:center;
+    }
+
+    .content-holder {
+        margin: 2rem ;
+    }
+
+    .content-holder h3{
+        font-size:var(--fs-xl);
+    }
+
+    .content-holder p{
+        font-size: var(--fs-base);
+    }
+    
+}

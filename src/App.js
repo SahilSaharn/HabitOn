@@ -1,10 +1,11 @@
 import './App.css';
+import LandingPage from './Components/LandingPage';
 import Navbar from './Components/Navbar';
 function App() {
   return (
     <>
       <Navbar />
-      <h1 align='center' >hello Habit-O(n)</h1>
+      <LandingPage/>
     </>
   );
 }
