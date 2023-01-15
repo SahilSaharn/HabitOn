@@ -40,7 +40,7 @@ function LandingPage() {
       </header>
 
       {/* till here we have our header element  */}
-
+      <div className="temp">
       <div className="dark-bg-cont">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f9f9f9" fill-opacity="1" d="M0,192L60,176C120,160,240,128,360,112C480,96,600,96,720,122.7C840,149,960,203,1080,192C1200,181,1320,107,1380,69.3L1440,32L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
 
@@ -57,8 +57,9 @@ function LandingPage() {
           <p>
             Habit O(n) isn’t like any other Todo list, its much more than that. it provides you daily habit reminder’s so that you can adjust you schedule as per your suitable time and it also provides you the score and analytics of your habits so you stay motivated and consistent to be a better self           
           </p>
-        </div>npm 
+        </div>
 
+      </div>
       </div>
 
     </div>

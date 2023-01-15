@@ -44,10 +44,11 @@
 
 .dark-bg-cont{
     background-color: #0a1930;
+    padding:0.01px;
 }
 
 .content-holder{
-    margin: 3rem 2.5rem;
+    margin :0px 3rem 2.5rem;
 }
 
 .content-holder h3{
@@ -55,15 +56,15 @@
     font-size: var(--fs-2xl);
 }
 
-.content-holder p {
+.content-holder p{
     color :rgba(249, 249, 249, 0.8);
     font-size: var(--fs-md);
     padding: 0.5em 1em;
     word-spacing: 5px;
     letter-spacing: 2px;
     font-weight: 500;
+    margin-bottom: 2rem;
 }
-
 
 @media (max-width :890px){
     .header-cont div h1{
@@ -105,10 +106,6 @@
         text-align:center;
     }
 
-    .content-holder {
-        margin: 2rem ;
-    }
-
     .content-holder h3{
         font-size:var(--fs-xl);
     }
@@ -117,4 +114,10 @@
         font-size: var(--fs-base);
     }
     
+}
+
+@media (max-width: 470px) {
+    .content-holder{
+        margin: 0px 2.5rem 1.5rem;
+    }
 }
