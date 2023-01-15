@@ -34,9 +34,9 @@
     justify-content: center;
 }
 
-@media (max-width :291px) {
+/* @media (max-width :291px) {
     .links-holder {
         text-align: center;
         margin-top: 8rem;
     }
-}
+} */

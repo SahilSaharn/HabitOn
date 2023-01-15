@@ -15,13 +15,13 @@
     font-family: 'Sofia Sans', sans-serif;
     font-weight: 700;
     font-size: var(--fs-xl);
-    padding: 0.7em 0.5em;
-    margin: 0px 1rem;
+    padding: 0.5em;
+    margin: 0px 1.5rem;
     color: #103271;
 }
 
 .links-cont {
-    margin: 0px 1rem;
+    margin: 0px 1.5rem;
 }
 
 .navbar-cont a span {
@@ -35,7 +35,7 @@
     font-size: var(--fs-base);
     color: #154ba1;
     font-weight: 700;
-    padding: 2.2em 0.7em;
+    padding: 1.6em 0.9em;
     border-bottom: 4px solid #154ba100;
     transition: all 0.3s;
 }
@@ -45,7 +45,8 @@
 }
 
 .links-cont a:hover {
-    border-bottom: 4px solid #154ba1;
+    color : #103271;
+    border-bottom: 4px solid #103271;
 }
 
 .mobile-nav {
@@ -57,6 +58,13 @@
     padding: 1em 0.8em;
     cursor: pointer;
     transition: all 0.6s;
+}
+
+.mobile-nav div{
+    display :inline-block;
+    position :absolute;
+    top: 21px;
+    right : 27px
 }
 
 #signup-btn {
@@ -84,7 +92,8 @@
         transform: scale(1.1);
     }
 
-    60% {
+    25% {
         transform: scale(1);
     }
+
 }
