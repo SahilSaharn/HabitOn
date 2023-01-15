@@ -64,6 +64,32 @@
     font-weight: 500;
 }
 
+#how-to-use-btn {
+    display: block;
+    margin: auto;
+    padding :0.6em 1.4em;
+    font-size : var(--fs-base);
+    font-weight: 600;
+    color: #0a1931;
+    border: none;
+    border-radius: 10px;
+}
+
+.bottom-btns-container {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.bottom-btns {
+    background: #0a1931;
+    color: #f9f9f9;
+    border: none;
+    font-size: var(--fs-sm);
+    font-weight: bold;
+}
+
 
 @media (max-width :890px){
     .header-cont div h1{

@@ -57,7 +57,15 @@ function LandingPage() {
           <p>
             Habit O(n) isn’t like any other Todo list, its much more than that. it provides you daily habit reminder’s so that you can adjust you schedule as per your suitable time and it also provides you the score and analytics of your habits so you stay motivated and consistent to be a better self           
           </p>
-        </div>npm 
+        </div> 
+
+        <div>
+          <button id="how-to-use-btn"> how to use Habit O(n) </button>
+        </div>
+        <div className="bottom-btns-container">
+          <button className="bottom-btns">About us!</button>
+          <button className="bottom-btns">Sign up/in</button>
+        </div>
 
       </div>
 
