@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import '../Component_styles/Navbar_styles.css'
-import { easeInOut, motion, AnimatePresence } from 'framer-motion';
+import { easeInOut, motion ,AnimatePresence } from 'framer-motion';
 
 import { FaHome, FaCompass, FaUserPlus, FaBars, FaTimesCircle } from 'react-icons/fa';
 import Mobilenav from './Mobilenav';
@@ -32,9 +32,9 @@ function Navbar() {
         Habit-O(n)
       </motion.h2>
       <motion.div className="links-cont sofi"
-        initial={{ opacity: 0, y: -100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.7 }}
+        initial = {{opacity :0, y:-100}}
+        animate = {{opacity :1 , y:0}}
+        transition = {{delay :0.7}}
       >
         <a href="/home"> <span> <FaHome /> Home </span> </a>
         <a href="/joke"> <span> <FaCompass /> Explore </span> </a>
@@ -47,25 +47,25 @@ function Navbar() {
         onClick={() => setShowMobileNav((prev) => !prev)}
       >
         <AnimatePresence>
-          {showMobileNav ?
-            (<motion.div key="circle"
-              initial={{ scale: 0, rotate: "180deg" }}
-              animate={{ scale: 1, rotate: "0deg" }}
-              exit={{ x: 100, rotate: "-180deg" }}
-              transition={{ duration: 0.6 }}
-            ><FaTimesCircle /></motion.div>)
-            : (<motion.div key="bars"
-              initial={{ scale: 0, rotate: "180deg" }}
-              animate={{ scale: 1, rotate: "0deg" }}
-              exit={{ x: 100, rotate: "-180deg" }}
-              transition={{ duration: 0.6 }}
-            ><FaBars /></motion.div>)
-          }
+        {showMobileNav ?
+        ( <motion.div key="circle" 
+        initial ={{scale:0, rotate:"180deg"}} 
+        animate={{scale :1, rotate: "0deg"}} 
+        exit={{x:100 ,rotate:"-180deg" }}
+        transition = {{duration : 0.6}}
+        ><FaTimesCircle/></motion.div> )
+        : (<motion.div key="bars" 
+        initial ={{scale:0, rotate:"180deg"}} 
+        animate={{scale :1, rotate: "0deg"}} 
+        exit={{x:100 ,rotate:"-180deg" }}
+        transition = {{duration : 0.6}}
+        ><FaBars/></motion.div> )
+        }
         </AnimatePresence>
       </div>
     </div>
     <AnimatePresence>
-      {showMobileNav && <Mobilenav key={'hello'} />}
+    {showMobileNav && <Mobilenav key={'hello'} />}
     </AnimatePresence>
   </>)
 

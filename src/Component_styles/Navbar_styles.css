@@ -45,7 +45,7 @@
 }
 
 .links-cont a:hover {
-    color: #103271;
+    color : #103271;
     border-bottom: 4px solid #103271;
 }
 
@@ -60,11 +60,11 @@
     transition: all 0.6s;
 }
 
-.mobile-nav div {
-    display: inline-block;
-    position: absolute;
+.mobile-nav div{
+    display :inline-block;
+    position :absolute;
     top: 21px;
-    right: 27px
+    right : 27px
 }
 
 #signup-btn {

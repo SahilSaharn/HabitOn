@@ -15,8 +15,8 @@ function Mobilenav() {
       transition={{
         duration: 0.4
       }}
-      exit={{
-        opacity: 0
+      exit= {{
+        opacity :0
       }}
     >
       <motion.div className="links-holder sofi"
