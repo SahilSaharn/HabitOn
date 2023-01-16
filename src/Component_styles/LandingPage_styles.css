@@ -4,6 +4,7 @@
     justify-content : space-around;
     align-items :center;
     padding : 3em 2em;
+    overflow : hidden;
 }
 
 .header-cont img{

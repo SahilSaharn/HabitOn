@@ -1,11 +1,105 @@
 import React from 'react'
 import "../Component_styles/LandingPage_styles.css"
-// import a from "../usedImages/header-bg-image.png"
-// import b from "../usedImages/header-bg-image-5.png"
-// import c from "../usedImages/header-bg-image.png"
-// import d from "../usedImages/header-bg-image.png"
-
 import images from '../usedImages/images.js'
+
+import { motion } from 'framer-motion';
+
+const leftFadeIn = {
+  from : {
+    opacity :0,
+    x: -500
+  },
+  to : {
+    opacity :1,
+    x : 0,
+    transition : {
+      delay : 1,
+      type : 'spring',
+      duration :0.6,
+      bounce : 0.5
+    }
+  }
+}
+
+const titleAnimate = {
+  from : {
+    opacity :0,
+    x : -500,
+  },
+  to : {
+    opacity : 1,
+    x :0
+  }
+}
+
+const popUp = {
+  from : {
+    opacity :0,
+    scale : 0
+  },
+  to : {
+    opacity : 1,
+    scale :1,
+    transition : {
+      delay : 1.5,
+      type : "spring",
+      bounce : 0.5,
+      duration : 0.4
+    }
+  }
+}
+
+const imageAnimate = {
+  from : {
+    opacity :0,
+    x : 300,
+  },
+  to : {
+    opacity : 1,
+    x :0,
+    transition : {
+      delay : 0.3,
+      type : 'spring',
+      duration :0.4,
+      bounce : 0.5
+    }
+  }
+}
+
+const questionaAnimate = {
+  from : {
+    x : -300,
+    opacity : 0,
+  },
+  to : {
+    x :0,
+    opacity :1,
+    transition : {
+      delay : 0.4,
+      type : 'spring',
+      duration : 0.5,
+      bounce : 0.5
+    }
+  }
+}
+
+const paraAnimate = {
+  from : {
+    y : 30,
+    opacity : 0,
+  },
+  to : {
+    y : 0,
+    opacity :1,
+    transition : {
+      delay : 1,
+      duration : 0.4,
+    },
+  },
+  viewport : {
+    once :true
+  }
+}
 
 function LandingPage() {
   const [imgi ,setImgi] = React.useState(0);
@@ -32,11 +126,21 @@ function LandingPage() {
   return (
     <div className='sofi' >
       <header className='header-cont'>
-        <div > 
+        <motion.div 
+          variants={leftFadeIn} 
+          initial={"from"} 
+          animate={"to"}
+          > 
           <h1> your habits will determine your future. </h1>
-          <a href="/" id='enter-now-btn' > change your future now! </a>
-        </div>
-        <img src={ (imgi < images.length) ? images[imgi] : images[0] } alt="oops!" id='image-holder' />
+          <motion.a variants={popUp}  href="/" id='enter-now-btn' > change your future now! </motion.a>
+        </motion.div>
+        <motion.img src={ (imgi < images.length) ? images[imgi] : images[0] }
+          alt="oops!" 
+          id='image-holder'
+          variants = { imageAnimate} 
+          initial = {'from'}
+          animate = {'to'}
+        />
       </header>
 
       {/* till here we have our header element  */}
@@ -46,27 +150,40 @@ function LandingPage() {
 
         <div className="content-holder">
 
-          <h3>What is Habit O(n) ?</h3>
-          <p>
+          <motion.h3
+            variants = {questionaAnimate}
+            initial = {'from'}
+            whileInView = {'to'}
+            viewport = {{once:true}}
+          >What is Habit O(n) ?</motion.h3>
+          <motion.p variants ={paraAnimate} initial={'from'} whileInView ={'to'} viewport ={{once : true}} >
             habit o(n) is a productivity tool that will accompany you in your consistent habit building journey by reminding you your daily schedule & motivate you towards your great habits by having streak system and graphics for which your future self will thank you !           
-          </p>
+          </motion.p>
         </div>
 
         <div className="content-holder">
-          <h3>Why Habit O(n) ?</h3>
-          <p>
+          <motion.h3
+            variants = {questionaAnimate}
+            initial = {'from'}
+            whileInView = {'to'}
+            viewport = {{once:true}}
+          >Why Habit O(n) ?</motion.h3>
+          <motion.p variants ={paraAnimate} initial={'from'} whileInView ={'to'} viewport ={{once : true}}  >
             Habit O(n) isn’t like any other Todo list, its much more than that. it provides you daily habit reminder’s so that you can adjust you schedule as per your suitable time and it also provides you the score and analytics of your habits so you stay motivated and consistent to be a better self           
-          </p>
+          </motion.p>
         </div> 
 
         <div align="center">
-          <a href="/" id="how-to-use-btn"> how to use Habit O(n) </a>
+          <motion.a href="/" id="how-to-use-btn" variants= {popUp} initial={'from'} whileInView = {'to'} > how to use Habit O(n) </motion.a>
         </div>
 
-        <div className="bottom-btns-container">
+        <motion.div className="bottom-btns-container"
+          initial = {{ opacity:0 , y : 100 }}
+          whileInView = {{opacity :1 , y : 0}}
+        >
           <a href="/" >About us!</a>
           <a href="/" >Sign up/in</a>
-        </div>
+        </motion.div>
 
       </div>
       </div>
