@@ -1,7 +1,7 @@
 import React from 'react'
 import "../Component_styles/Mobilenav.css"
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaHome, FaCompass, FaUserPlus, FaBars, FaTimesCircle } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { FaHome, FaCompass, FaUserPlus } from 'react-icons/fa';
 
 function Mobilenav() {
   return (
