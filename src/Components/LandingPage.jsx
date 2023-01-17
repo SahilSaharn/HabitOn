@@ -93,36 +93,36 @@ const paraAnimate = {
 function LandingPage() {
   const [imgi ,setImgi] = React.useState(0);
 
-  // React.useEffect( ()=> {
-  //   const changingImage = setInterval(() => {
+  React.useEffect( ()=> {
+    const changingImage = setInterval(() => {
 
-  //     document.getElementById('image-holder').style.opacity="0";
-  //     setImgi( (prev) => {
-  //       if(prev >= 4)
-  //       return 0;
-  //       return prev+1;
-  //     })
+      document.getElementById('image-holder').style.opacity="0";
+      setImgi( (prev) => {
+        if(prev >= 4)
+        return 0;
+        return prev+1;
+      })
 
-  //     setTimeout(() => {
-  //       document.getElementById('image-holder').style.opacity="1";
-  //     }, 400);
+      setTimeout(() => {
+        document.getElementById('image-holder').style.opacity="1";
+      }, 400);
 
-  //   }, 7000);
-  //   return () => clearInterval(changingImage);
-  // }, [] )
+    }, 7000);
+    return () => clearInterval(changingImage);
+  }, [] )
 
   return (
-    <div className='sofi' >
+    <motion.div className='sofi' >
       <header className='header-cont'>
-        <div 
+        <motion.div 
           variants={leftFadeIn} 
           initial={"from"} 
           animate={"to"}
           > 
           <h1> your habits will determine your future. </h1>
-          <a variants={popUp}  href="/" id='enter-now-btn' > change your future now! </a>
-        </div>
-        <img src={ (imgi < images.length) ? images[imgi] : images[0] }
+          <motion.a variants={popUp}  href="/" id='enter-now-btn' > change your future now! </motion.a>
+        </motion.div>
+        <motion.img src={ (imgi < images.length) ? images[imgi] : images[0] }
           alt="oops!" 
           id='image-holder'
           variants = { imageAnimate} 
@@ -138,45 +138,45 @@ function LandingPage() {
 
         <div className="content-holder">
 
-          <h3
+          <motion.h3
             variants = {questionaAnimate}
             initial = {'from'}
             whileInView = {'to'}
             viewport = {{once:true}}
-          >What is Habit O(n) ?</h3>
-          <p variants ={paraAnimate} initial={'from'} whileInView ={'to'} viewport ={{once : true}} >
+          >What is Habit O(n) ?</motion.h3>
+          <motion.p variants ={paraAnimate} initial={'from'} whileInView ={'to'} viewport ={{once : true}} >
             habit o(n) is a productivity tool that will accompany you in your consistent habit building journey by reminding you your daily schedule & motivate you towards your great habits by having streak system and graphics for which your future self will thank you !           
-          </p>
+          </motion.p>
         </div>
 
         <div className="content-holder">
-          <h3
+          <motion.h3
             variants = {questionaAnimate}
             initial = {'from'}
             whileInView = {'to'}
             viewport = {{once:true}}
-          >Why Habit O(n) ?</h3>
-          <p variants ={paraAnimate} initial={'from'} whileInView ={'to'} viewport ={{once : true}}  >
+          >Why Habit O(n) ?</motion.h3>
+          <motion.p variants ={paraAnimate} initial={'from'} whileInView ={'to'} viewport ={{once : true}}  >
             Habit O(n) isn’t like any other Todo list, its much more than that. it provides you daily habit reminder’s so that you can adjust you schedule as per your suitable time and it also provides you the score and analytics of your habits so you stay motivated and consistent to be a better self           
-          </p>
+          </motion.p>
         </div> 
 
         <div align="center">
-          <a href="/" id="how-to-use-btn" variants= {popUp} initial={'from'} whileInView = {'to'} > how to use Habit O(n) </a>
+          <motion.a href="/" id="how-to-use-btn" variants= {popUp} initial={'from'} whileInView = {'to'} > how to use Habit O(n) </motion.a>
         </div>
 
-        <div className="bottom-btns-container"
+        <motion.div className="bottom-btns-container"
           initial = {{ opacity:0 , y : 100 }}
           whileInView = {{opacity :1 , y : 0}}
         >
           <a href="/" >About us!</a>
           <a href="/" >Sign up/in</a>
-        </div>
+        </motion.div>
 
       </div>
       </div>
 
-    </div>
+    </motion.div>
   )
 }
 

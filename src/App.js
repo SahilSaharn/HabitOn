@@ -6,13 +6,13 @@ import ErrorState from './Contexts/ErrorState';
 function App() {
   return (
     <>
-      <Navbar />
-      <LandingPage/>
-
       <ErrorState>
-        <ErrorComponent/>
-      </ErrorState>
+    
+        <Navbar />
+        <LandingPage />
+        <ErrorComponent />
       
+      </ErrorState>
     </>
   );
 }
