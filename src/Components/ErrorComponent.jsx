@@ -27,13 +27,13 @@ const Error = (props) => {
       borderColor : (props.type) ? '#66d441' : '#fb3636',
 
     }}
-      variants = {errorAnimate} initial = {'from'} animate = {'to'} exit={{ opacity :0 , x : -300 }}
+      variants = {errorAnimate} initial = {'from'} animate = {'to'} exit={{ opacity :0 , x : -400 }}
     >
       <div className='error-icon'> { (props.type) ? <FaCheck/> : <FaTimesCircle/> }</div>
       { 
         (props.message.length < 40) ? 
         <div className="error-message">
-          {props.message} {props.place}
+          {props.message} 
         </div> : 
         <Marquee speed={50} className='error-message' gradient={false} pauseOnHover={true} >
           {props.message} 

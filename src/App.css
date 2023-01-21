@@ -39,3 +39,7 @@ body{
 .sofi{
     font-family: 'Sofia Sans', sans-serif;
 }
+
+.overflow-hidden{
+    overflow: hidden;
+}

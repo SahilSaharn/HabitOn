@@ -107,12 +107,17 @@ function LandingPage() {
         document.getElementById('image-holder').style.opacity="1";
       }, 400);
 
-    }, 7000);
+    }, 60000);
     return () => clearInterval(changingImage);
   }, [] )
 
   return (
-    <motion.div className='sofi' >
+    <motion.div className='sofi'
+      initial={{ opacity : 0 }}
+      animate={{ opacity : 1 }}
+      exit={{ x: "90vw", opacity : 0  }}
+      transition={{ duration: 0.5 }}
+    >
       <header className='header-cont'>
         <motion.div 
           variants={leftFadeIn} 

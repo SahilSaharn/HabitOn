@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../Component_styles/Navbar_styles.css'
 import { easeInOut, motion ,AnimatePresence } from 'framer-motion';
-
+import { Link } from 'react-router-dom';
 import { FaHome, FaCompass, FaUserPlus, FaBars, FaTimesCircle } from 'react-icons/fa';
 import Mobilenav from './Mobilenav';
 import '../Component_styles/Navbar_styles.css';
@@ -36,9 +36,9 @@ function Navbar() {
         animate = {{opacity :1 , y:0}}
         transition = {{delay :0.7}}
       >
-        <a href="/home"> <span> <FaHome /> Home </span> </a>
-        <a href="/joke"> <span> <FaCompass /> Explore </span> </a>
-        <a href="/coke" id='signup-btn'> <span> <FaUserPlus /> Sign In/Up </span> </a>
+        <Link to="/"> <span> <FaHome /> Home </span> </Link>
+        <Link to="/explore"> <span> <FaCompass /> Explore </span> </Link>
+        <Link to="/signin" id='signup-btn'> <span> <FaUserPlus /> Sign In/Up </span> </Link>
       </motion.div>
 
       <div

@@ -2,7 +2,7 @@
 .error-cont{
     display: flex;
     width: 340px;
-    justify-content: space-evenly;
+    justify-content: start;
     align-items: center;
     position: fixed;
     border-radius: 15px;
@@ -21,6 +21,7 @@
 .error-icon{
     font-size: var(--fs-base);
     padding: 0.5em 0px 0.2em 0px ;
+    margin-left: 0.5rem;
 }
 
 @media (max-width : 425px){
