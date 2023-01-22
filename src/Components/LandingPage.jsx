@@ -107,16 +107,16 @@ function LandingPage() {
         document.getElementById('image-holder').style.opacity="1";
       }, 400);
 
-    }, 60000);
+    }, 10000);
     return () => clearInterval(changingImage);
   }, [] )
 
   return (
     <motion.div className='sofi'
-      initial={{ opacity : 0 }}
-      animate={{ opacity : 1 }}
+      initial = {{x: "-90vw", opacity : 0}}
+      animate = {{x: 0, opacity : 1}}
+      transition = {{duration : 0.6}}
       exit={{ x: "90vw", opacity : 0  }}
-      transition={{ duration: 0.5 }}
     >
       <header className='header-cont'>
         <motion.div 
@@ -170,13 +170,13 @@ function LandingPage() {
           <motion.a href="/" id="how-to-use-btn" variants= {popUp} initial={'from'} whileInView = {'to'} > how to use Habit O(n) </motion.a>
         </div>
 
-        <motion.div className="bottom-btns-container"
+        <div className="bottom-btns-container"
           initial = {{ opacity:0 , y : 100 }}
           whileInView = {{opacity :1 , y : 0}}
         >
           <a href="/" >About us!</a>
           <a href="/" >Sign up/in</a>
-        </motion.div>
+        </div>
 
       </div>
       </div>

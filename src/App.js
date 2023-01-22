@@ -16,7 +16,7 @@ function App() {
 
         <Navbar />
         
-        <AnimatePresence>
+        <AnimatePresence exitBeforeEnter > 
         <Routes location = {location} key={location.pathname} >
             <Route path='/' element = { <LandingPage/> } />
             <Route path='/signin' element = { <SignUpPage/> } />
