@@ -11,7 +11,7 @@
     background-image: url('../usedImages/signup-bg-image.png');
     background-repeat: no-repeat;
     background-position: bottom right;
-    background-size: 40%;
+    background-size: max(500px , 40%);
     /* now we have to give bg image here  */
 }
 

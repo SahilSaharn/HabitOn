@@ -27,7 +27,7 @@ const Error = (props) => {
       borderColor : (props.type) ? '#66d441' : '#fb3636',
 
     }}
-      variants = {errorAnimate} initial = {'from'} animate = {'to'} exit={{ opacity :0 , x : -400 }}
+      variants = {errorAnimate} initial = {'from'} animate = {'to'} exit={{ opacity :0 , x :-350 }}
     >
       <div className='error-icon'> { (props.type) ? <FaCheck/> : <FaTimesCircle/> }</div>
       { 

@@ -9,7 +9,7 @@ function Loader(props) {
         transition = {{ duration: 0.5}}
         exit={{ scale : 0 }}
     >
-    <svg viewBox="17.438 8.719 85.124 85.231" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
+    <svg viewBox="17.438 8.719 85.124 85.231" shapeRendering="geometricPrecision" textRendering="geometricPrecision"
         xmlns="http://www.w3.org/2000/svg" fill= {props.color} height={props.height} width={props.width} >
         <g>
             <g>
