@@ -29,7 +29,7 @@ function SignUpPage() {
         if (user.gotCode) {
             setErrorData({message : "Verification code sent success : Redirecting to verify page     " , type : true});
             const timeoutId = setTimeout(() => {
-              redirect("/explore");
+              redirect(`/verify/${user.email}`);
             }, 2000);
             return () => clearTimeout(timeoutId);
         }
@@ -57,13 +57,13 @@ function SignUpPage() {
         try{
             const headers = {
                 'Content-Type': 'application/json',
-                'Authorization': 'habit-0(n)*gurjass-2015^<sahil>!jaiMataDi...'
+                'Authorization': process.env.REACT_APP_API_KEY
             };
             const {data} = await axios.post('http://localhost:5050/generate_code' , {email : mail} ,{headers})
             if(data.type){
                 //means its true...
                 // setErrorData({message : data.message , type : data.type});
-                setUser( (prev) => ({...prev , gotCode : true}) );
+                setUser( (prev) => ({...prev , gotCode : true , email : mail}) );
             }
             
         } catch(e) {
@@ -71,9 +71,8 @@ function SignUpPage() {
                 console.log(e.response.data)
                 setErrorData( {message : e.response.data.message ,type : e.response.data.type } )
             } else {
-                setErrorData( {message : "Something Went Wrong :(" ,type : false } )
+                setErrorData( {message : e.message ,type : false } )
             }
-            
         }
 
         setShowLoader(false);
@@ -102,7 +101,7 @@ function SignUpPage() {
                     </div>
                     <div className="input-field">
                         <label htmlFor="mail">Email</label>
-                        <input type="email" id="mail" spellCheck='false' onChange={getMail} value={mail} />
+                        <input type="email" id="mail" autoComplete='off' required spellCheck='false' onChange={getMail} value={mail} />
                     </div>
                     
                     <button>

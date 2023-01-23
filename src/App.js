@@ -5,6 +5,7 @@ import ErrorComponent from './Components/ErrorComponent';
 import ErrorState from './Contexts/ErrorState';
 import SignUpPage from './Components/SignUpPage';
 import UserAndThemeStates from './Contexts/UserAndThemeStates';
+import VerifyPage from './Components/VerifyPage';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 function App() {
@@ -21,12 +22,13 @@ function App() {
             <AnimatePresence mode='wait' >
               <Routes location={location} key={location.pathname} >
                 <Route path='/' element={<LandingPage />} />
-                <Route path='/signin' element={<SignUpPage />} />
+                <Route path='/signup' element={<SignUpPage />} />
+                <Route path='/verify/:email'  element={<VerifyPage/>} />
               </Routes>
             </AnimatePresence>
 
             <ErrorComponent />
-            
+
           </UserAndThemeStates>
         </ErrorState>
       </div>

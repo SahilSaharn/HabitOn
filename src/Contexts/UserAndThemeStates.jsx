@@ -7,7 +7,7 @@ function UserAndThemeStates(props) {
     name : "",
     email : "",
     gotCode : false,
-    verfiedCode : false
+    verifiedCode : false
   })
 
   return (
