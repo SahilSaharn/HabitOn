@@ -6,7 +6,7 @@ import { useNavigate ,useParams } from 'react-router-dom';
 import { motion ,AnimatePresence } from 'framer-motion';
 import mailSentImage from '../usedImages/mailSentimage.png'
 import axios from 'axios';
-import "../Component_styles/VerifyPage.css"
+import "../Component_styles/VerifyPage_styles.css"
 
 function VerifyPage() {
 
@@ -23,7 +23,7 @@ function VerifyPage() {
     if(!user.gotCode){
       redirect('/signup')
     } else if( user.verifiedCode ){
-      redirect("/createProfile")
+      redirect("/register")
     }
   } ,[])
 
@@ -40,9 +40,11 @@ function VerifyPage() {
       setErrorData({message :  "Already Verfied." , type: true})
       return;
     }
+
     setShowLoader( true )
 
     try{
+
       const headers = {
           'Content-Type': 'application/json',
           'Authorization': process.env.REACT_APP_API_KEY

@@ -16,10 +16,11 @@ input[type=number] {
     place-items: center;
     overflow: auto;
     font-family: 'Sofia Sans', sans-serif;
-    background-image: url('../usedImages/verifypage-bg-image.png');
+    background-image: url('../usedImages/lines2.svg');
     background-repeat: no-repeat;
-    background-position: bottom right;
-    background-size: max(300px, 30%);
+    background-size: cover;
+    /* background-position: bottom right; */
+    /* background-size: max(300px, 30%); */
     /* now we have to give bg image here  */
 }
 
