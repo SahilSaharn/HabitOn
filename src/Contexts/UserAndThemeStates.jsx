@@ -5,9 +5,9 @@ function UserAndThemeStates(props) {
   const [user ,setUser] = useState({
     auth : false,
     name : "",
-    email : "",
-    gotCode : false,
-    verifiedCode : false
+    email : "sahilsaharn23@gmail.com",
+    gotCode : true,
+    verifiedCode : true
   })
 
   return (

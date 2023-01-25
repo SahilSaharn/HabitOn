@@ -128,7 +128,7 @@ input[type=number] {
     position: absolute;
     font-size: var(--fs-base);
     cursor: pointer;
-    color: rgba(10, 25, 49, 0.7);
+    color: rgba(10, 25, 49, 0.5);
     padding: 0.3em;
     background-color: rgba(0, 0, 0, 0);
     border: none;
@@ -137,7 +137,7 @@ input[type=number] {
 }
 
 .show-pass-icon:hover {
-    color: rgb(10, 25, 49);
+    color: rgba(10, 25, 49, 0.7);
 }
 
 #changeGender {

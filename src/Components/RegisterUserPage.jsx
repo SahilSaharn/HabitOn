@@ -5,6 +5,7 @@ import ErrorContext from '../Contexts/ErrorContext'
 import Loader from './Loader'
 import registerImg from '../usedImages/undraw_account_re_o7id.svg'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import {FaEye ,FaEyeSlash ,FaExchangeAlt} from "react-icons/fa";
 import {motion  ,AnimatePresence} from 'framer-motion'
 
@@ -13,6 +14,12 @@ const checkString = (str) => {
   const uppercaseRegex = /[A-Z]/;
   const specialCharRegex = /[!@#$%^&*_(),.?":{}|<>]/;
   const numberRegex = /[0-9]/;
+
+  if(str.length > 30){
+    return ({message : "Too long password" , ans : false})
+  } else if(str.trim().length < 8){
+    return ({message : "Password must be 8 Characters" , ans : false})
+  }
 
   if(!lowercaseRegex.test(str)){
     return ({message : "Noo lowercase letter in Password" , ans : false})
@@ -30,6 +37,7 @@ const checkString = (str) => {
 
 
 function RegisterUserPage() {
+  
   const {addError} = useContext(ErrorContext);
   const {user , setUser} = useContext(userContext);
 
@@ -86,7 +94,7 @@ function RegisterUserPage() {
     }) )
   }
 
-  const registerUser = (e) => {
+  const registerUser = async (e) => {
     //our regex to test any special characters in name...
     e.preventDefault();
     if( showLoader )
@@ -130,7 +138,43 @@ function RegisterUserPage() {
 
     //till here now we are good to go for our post request and register user...
     console.log('our nice post request :)');
+    
+    const req_body = {
+      email : formData.email,
+      name : formData.name,
+      password : formData.password.replace(/"/g, '\\"'),
+      gender : (formData.gender === "Male") ? "M" : "F",
+      dob : formData.dob
+    }
+    // .replace(/"/g, '\"')
+    console.log(req_body)
 
+    try{
+
+      const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': process.env.REACT_APP_API_KEY
+      };
+
+      const res = await axios.post('http://localhost:5050/register_user' , req_body , {headers})
+      console.log(res);
+      if(res.data.type){
+        setErrorData( {message : res.data.message ,type :res.data.type } )
+        //means we registered user correctly
+      } else {
+        setErrorData( {message : res.data.message ,type :res.data.type } )
+      }
+
+    } catch (e) {
+
+      console.log(e)
+      if("response" in e){
+        setErrorData( {message : e.response.data.message ,type : e.response.data.type } )
+      } else {
+        setErrorData( {message : e.message ,type : false } )
+      }
+
+    }
     setShowLoader(false);
   }
 
