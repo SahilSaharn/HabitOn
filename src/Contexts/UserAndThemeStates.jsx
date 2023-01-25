@@ -7,7 +7,8 @@ function UserAndThemeStates(props) {
     name : "",
     email : "",
     gotCode : false,
-    verifiedCode : false
+    verifiedCode : false,
+    forgotPass : false
   })
 
   return (
@@ -15,6 +16,7 @@ function UserAndThemeStates(props) {
        {props.children}
     </userContext.Provider>
   )
+  
 }
 
 export default UserAndThemeStates

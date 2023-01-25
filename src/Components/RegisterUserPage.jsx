@@ -61,9 +61,11 @@ function RegisterUserPage() {
       redirect("/signup")
     } else if(!user.verifiedCode){
       redirect(`/verify/${user.email}`)
+    } else if(user.verifiedCode){
+      //from here we will direct user to its...
     }
 
-  } , [])
+  } , [user])
   
   //to show the error...
   useEffect(()=>{
@@ -184,9 +186,18 @@ function RegisterUserPage() {
 
   return (
     <>
-          <motion.div>
+          <motion.div
+            initial = {{x: "-90vw", opacity : 0}}
+            animate = {{x: 0, opacity : 1}}
+            transition = {{duration : 0.6}}
+            exit={{ x: "90vw", opacity : 0 }}
+          >
             <div className="register-card-cont ">
-                <motion.form className="register-card" onSubmit={registerUser} >
+                <motion.form className="register-card" onSubmit={registerUser}
+                  initial = {{opacity :0 , scale : 0.4}}
+                  animate = {{opacity :1 ,scale  :1}}
+                  transition ={{delay :0.8, duration :1 ,type :'spring' ,bounce : 0.5}}
+                >
 
                     <div align='center'>
                         <img draggable='false' id='verify-imageCard' src={registerImg} alt="!oopps" />
@@ -206,14 +217,14 @@ function RegisterUserPage() {
                         <label htmlFor="pass">Password</label>
                         <div className='pass-field ' >
                           <input type={type} placeholder='password'  onChange={handleFormData}  required autoComplete='off' id="pass" name='password'  />
-                          <button className='show-pass-icon' onClick={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
+                          <button className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
                         </div>
                     </div>
                     <div className="input-field">
                         <label htmlFor="cpass">Confirm Password</label>
                         <div className='pass-field ' >
                           <input type={type} placeholder='password'  onChange={handleFormData}  required autoComplete='off' id="cpass" name='cpassword'  />
-                          <button className='show-pass-icon' onClick={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
+                          <button className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
                         </div>
                     </div>
 

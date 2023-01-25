@@ -1,4 +1,5 @@
 import './App.css';
+
 import LandingPage from './Components/LandingPage';
 import Navbar from './Components/Navbar';
 import ErrorComponent from './Components/ErrorComponent';
@@ -7,6 +8,8 @@ import SignUpPage from './Components/SignUpPage';
 import UserAndThemeStates from './Contexts/UserAndThemeStates';
 import VerifyPage from './Components/VerifyPage';
 import RegisterUserPage from './Components/RegisterUserPage';
+import SignInPage from './Components/SignInPage';
+
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 function App() {
@@ -26,6 +29,7 @@ function App() {
                 <Route path='/signup' element={<SignUpPage />} />
                 <Route path='/verify/:email' element={<VerifyPage />} />
                 <Route path='/register' element={<RegisterUserPage />} />
+                <Route path='/signin' element={<SignInPage />} />
               </Routes>
             </AnimatePresence>
 

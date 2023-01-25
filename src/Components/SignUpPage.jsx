@@ -39,11 +39,11 @@ function SignUpPage() {
         setMail(e.target.value)
     }
 
-    console.log(mail);
+    // console.log(mail);
     // habit-0(n)*gurjass-2015^<sahil>!jaiMataDi... [api_key]...
     const formSubbed= async (e) => {
         e.preventDefault();
-        console.log('making request');
+        // console.log('making request');
         // now we have to make our post request here and redirect user...
         if(user.gotCode){
             setErrorData({message : "Code Already Has been sent" , type : true});
@@ -68,7 +68,7 @@ function SignUpPage() {
             
         } catch(e) {
             if("response" in e){
-                console.log(e.response.data)
+                // console.log(e.response.data)
                 setErrorData( {message : e.response.data.message ,type : e.response.data.type } )
             } else {
                 setErrorData( {message : e.message ,type : false } )
@@ -99,6 +99,7 @@ function SignUpPage() {
                     <div align='center'>
                         <img draggable='false' id='imageCard' src={mailImage} alt="!oopps" />
                     </div>
+                    
                     <div className="input-field">
                         <label htmlFor="mail">Email</label>
                         <input type="email" id="mail" autoComplete='off' required spellCheck='false' onChange={getMail} value={mail} />
