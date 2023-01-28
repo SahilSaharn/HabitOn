@@ -162,7 +162,13 @@ function RegisterUserPage() {
       console.log(res);
       if(res.data.type){
         setErrorData( {message : res.data.message ,type :res.data.type } )
-        //means we registered user correctly
+        //means we registered user correctly and set the user context here...
+        setUser( prev => ({
+          ...prev,
+          auth : true,
+          name : req_body.name,
+          email : req_body.email
+        }) )
       } else {
         setErrorData( {message : res.data.message ,type :res.data.type } )
       }

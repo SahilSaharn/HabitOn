@@ -7,6 +7,7 @@ import {FaEye ,FaEyeSlash } from "react-icons/fa";
 import {motion  ,AnimatePresence} from 'framer-motion'
 import signInmage from "../usedImages/loginSvg.svg"
 import { useNavigate ,Link } from 'react-router-dom';
+import axios from 'axios';
 
 const checkString = (str) => {
   const lowercaseRegex = /[a-z]/;
@@ -44,11 +45,18 @@ function SignInPage() {
     email : "",
     password : ""
   });
+
   const [type , setType] = useState('password');
 
   const redirect = useNavigate();
 
-  useEffect(()=>{
+  useEffect( () => {
+    if(user.auth){
+      redirect(`habits/${user.name}`)
+    }
+  } , [user])
+
+  useEffect(()=>{ 
     if(errorData.message){
         addError(errorData.message , errorData.type)
     }
@@ -70,7 +78,11 @@ function SignInPage() {
 
   const signInUser= async e => {
     e.preventDefault();
-    setShowLoader(true);
+
+    if(showLoader){
+      return;
+    } else setShowLoader(true);
+    
     const isValidPass = checkString(userCreds.password);
     if(!isValidPass.ans){
       setErrorData({message : isValidPass.message , type : false})
@@ -79,12 +91,48 @@ function SignInPage() {
     }
 
     //our post request here to validate user...
+    const req_body = {
+      email : userCreds.email,
+      password : userCreds.password.replace(/"/g, '\\"')
+    }
+
+    try{
+
+      const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': process.env.REACT_APP_API_KEY
+      };
+
+      const res = await axios.post('http://localhost:5050/verify_user_creds' , req_body , {headers})
+      console.log(res.data);
+      if(res.data.type){
+        setErrorData( {message : res.data.message ,type :res.data.type } )
+        //means user authentecated right correctly set user here...
+        setUser( (prev) =>({
+          ...prev,
+          auth : true,
+          email : res.data.email,
+          name : res.data.name,
+        }) )
+        
+      } else {
+        setErrorData( {message : res.data.message ,type :res.data.type } )
+      }
+
+    } catch (e) {
+
+      console.log(e)
+      if("response" in e){
+        setErrorData( {message : e.response.data.message ,type : e.response.data.type } )
+      } else {
+        setErrorData( {message : e.message ,type : false } )
+      }
+
+    }
 
     setShowLoader(false);
   }
-
-  console.log(userCreds);
-
+  console.log(user)
   return (
     <>
         <motion.div
@@ -122,7 +170,7 @@ function SignInPage() {
 
                     <div className="sign-in-links-cont">
                       <Link to='/signup' className="sign-in-link">Sign Up</Link>
-                      <Link className="sign-in-link">Forgot Password ?</Link>
+                      <Link to='/forgotPass' className="sign-in-link">Forgot Password ?</Link>
                     </div>
                     
                 </motion.form>

@@ -127,7 +127,7 @@ function LandingPage() {
           <h1> your habits will determine your future. </h1>
           <motion.a variants={popUp}  href="/" id='enter-now-btn' > change your future now! </motion.a>
         </motion.div>
-        <motion.img src={ (imgi < images.length) ? images[imgi] : images[0] }
+        <motion.img draggable='false' src={ (imgi < images.length) ? images[imgi] : images[0] }
           alt="oops!" 
           id='image-holder'
           variants = { imageAnimate} 

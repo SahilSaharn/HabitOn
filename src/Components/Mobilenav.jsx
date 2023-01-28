@@ -1,9 +1,17 @@
-import React from 'react'
+import React , {useContext} from 'react'
 import "../Component_styles/Mobilenav.css"
+import userContext from '../Contexts/UserAndThemeContext';
 import { motion } from 'framer-motion';
-import { FaHome, FaCompass, FaUserPlus } from 'react-icons/fa';
+import { FaHome, FaCompass, FaUserPlus ,FaUser ,FaCalendarAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
-function Mobilenav() {
+function Mobilenav(props) {
+
+  const {user} = useContext(userContext);
+  const closeMobileNav = () => {
+    props.closeMobileNav( prev => !prev )
+  }
+
   return (
     <motion.div className='mobile-nav-cont'
       initial={{
@@ -38,9 +46,15 @@ function Mobilenav() {
           x: 500
         }}
       >
-        <a href="/home"> <span> <FaHome /> Home </span> </a>
-        <a href="/joke"> <span> <FaCompass /> Explore </span> </a>
-        <a href="/coke"> <span> <FaUserPlus /> Sign In/Up </span> </a>
+        <Link to="/" onClick={closeMobileNav}> <span> <FaHome /> Home </span> </Link>
+        <Link to="/explore" onClick={closeMobileNav}> <span> <FaCompass /> Explore </span> </Link>
+        { (user.auth) && <Link to="/" onClick={closeMobileNav}> <span> <FaCalendarAlt /> Habits </span> </Link> }
+        {
+          (user.auth) ? 
+          <Link to="/userhabits" onClick={closeMobileNav}> <span> <FaUser /> {(user.name.length > 13) ? `${user.name.substring(0,15)}...` : user.name} </span> </Link> :
+          <Link to="/signin" onClick={closeMobileNav}> <span> <FaUserPlus /> Sign In/Up </span> </Link> 
+        }
+        {/* <Link to="/signin" onClick={closeMobileNav}> <span> <FaUserPlus /> Sign In/Up </span> </Link> */}
       </motion.div>
     </motion.div>
   )

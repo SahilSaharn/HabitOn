@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState ,useContext } from 'react'
 import '../Component_styles/Navbar_styles.css'
 import { easeInOut, motion ,AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaHome, FaCompass, FaUserPlus, FaBars, FaTimesCircle } from 'react-icons/fa';
+import { FaHome, FaCompass, FaUserPlus, FaBars, FaTimesCircle ,FaUser ,FaCalendarAlt } from 'react-icons/fa';
 import Mobilenav from './Mobilenav';
+import userContext from '../Contexts/UserAndThemeContext';
 import '../Component_styles/Navbar_styles.css';
+import userEvent from '@testing-library/user-event';
 function Navbar() {
+
+  const {user} = useContext(userContext);
+  
 
   const [showMobileNav, setShowMobileNav] = useState(false);
   return (<>
@@ -38,7 +43,13 @@ function Navbar() {
       >
         <Link to="/"> <span> <FaHome /> Home </span> </Link>
         <Link to="/explore"> <span> <FaCompass /> Explore </span> </Link>
-        <Link to="/signin" id='signup-btn'> <span> <FaUserPlus /> Sign In/Up </span> </Link>
+        {(user.auth && <Link to="/explore"> <span> <FaCalendarAlt /> Habits </span> </Link> )}
+
+        {
+          (user.auth) ? 
+          <Link to="/signin" > <span> <FaUser/> {(user.name.length > 13) ? `${user.name.substring(0,15)}...` : user.name} </span> </Link> :
+          <Link to="/signin" id='signup-btn' > <span> <FaUserPlus /> Sign In/Up </span> </Link>
+        }
       </motion.div>
 
       <div
@@ -65,7 +76,7 @@ function Navbar() {
       </div>
     </div>
     <AnimatePresence>
-    {showMobileNav && <Mobilenav key={'hello'} />}
+    {showMobileNav && <Mobilenav key={'hello'} closeMobileNav={setShowMobileNav} />}
     </AnimatePresence>
   </>)
 
