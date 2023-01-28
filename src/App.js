@@ -12,6 +12,7 @@ import SignInPage from './Components/SignInPage';
 
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import HabitsPage from './Components/HabitsPage';
 function App() {
 
   const location = useLocation();
@@ -30,6 +31,7 @@ function App() {
                 <Route path='/verify/:email' element={<VerifyPage />} />
                 <Route path='/register' element={<RegisterUserPage />} />
                 <Route path='/signin' element={<SignInPage />} />
+                <Route path='/habits/:email' element={<HabitsPage />} />
               </Routes>
             </AnimatePresence>
 

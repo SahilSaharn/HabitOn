@@ -41,14 +41,14 @@ function Navbar() {
         animate = {{opacity :1 , y:0}}
         transition = {{delay :0.7}}
       >
-        <Link to="/"> <span> <FaHome /> Home </span> </Link>
-        <Link to="/explore"> <span> <FaCompass /> Explore </span> </Link>
-        {(user.auth && <Link to="/explore"> <span> <FaCalendarAlt /> Habits </span> </Link> )}
+        <Link to="/"> <span> <FaHome /> &nbsp; Home </span> </Link>
+        <Link to="/explore"> <span> <FaCompass /> &nbsp; Explore </span> </Link>
+        {(user.auth && <Link to="/explore"> <span> <FaCalendarAlt /> &nbsp; Habits </span> </Link> )}
 
         {
           (user.auth) ? 
-          <Link to="/signin" > <span> <FaUser/> {(user.name.length > 13) ? `${user.name.substring(0,15)}...` : user.name} </span> </Link> :
-          <Link to="/signin" id='signup-btn' > <span> <FaUserPlus /> Sign In/Up </span> </Link>
+          <Link to="/signin" > <span> <FaUser/> &nbsp; {(user.name.length > 13) ? `${user.name.substring(0,15)}...` : user.name} </span> </Link> :
+          <Link to="/signin" id='signup-btn' > <span> <FaUserPlus /> &nbsp; Sign In/Up </span> </Link>
         }
       </motion.div>
 
