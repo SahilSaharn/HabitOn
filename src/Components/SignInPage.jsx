@@ -38,7 +38,7 @@ const checkString = (str) => {
 function SignInPage() {
   const {addError} = useContext(ErrorContext);
   const {user , setUser} = useContext(userContext);
-
+  
   const [showLoader, setShowLoader] = useState(false);
   const [errorData , setErrorData] = useState({});
   const [userCreds , setUserCreds] = useState({
@@ -52,7 +52,7 @@ function SignInPage() {
 
   useEffect( () => {
     if(user.auth){
-      redirect(`habits/${user.name}`)
+      redirect(`/habits/${user.name.replace(/\s/g, "_")}`)
     }
   } , [user])
 
