@@ -11,8 +11,14 @@ function UserAndThemeStates(props) {
     forgotPass : false
   })
 
+  const [theme ,setTheme] = useState(true);
+  //true means white and false means dark mode...
+  const toggleTheme = ( ) => {
+    setTheme( (prev) => !prev )
+  } 
+
   return (
-    <userContext.Provider value={{user, setUser}} >
+    <userContext.Provider value={{user, setUser , theme , toggleTheme}} >
        {props.children}
     </userContext.Provider>
   )

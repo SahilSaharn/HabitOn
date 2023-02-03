@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaClock } from "react-icons/fa";
 
-function Clock() {
+function Clock({itsColor}) {
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -13,7 +13,7 @@ function Clock() {
   }, []);
 
   return (
-    <div className='curr-time' >
+    <div className='curr-time' style={{color : itsColor}} >
       <FaClock/> &nbsp; {time.toLocaleString()}
     </div>
   );

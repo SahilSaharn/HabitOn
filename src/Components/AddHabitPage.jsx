@@ -9,7 +9,7 @@ import {motion  ,AnimatePresence, calcLength} from 'framer-motion'
 import Loader from './Loader';
 
 
-function AddHabitPage({toggleModal}) {
+function AddHabitPage({toggleModal , theme}) {
 
   const {addError} = useContext(ErrorContext);
   const {user} = useContext(UserContext); 
@@ -195,5 +195,4 @@ function AddHabitPage({toggleModal}) {
     </>
   )
 }
-
 export default AddHabitPage

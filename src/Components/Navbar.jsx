@@ -9,12 +9,12 @@ import '../Component_styles/Navbar_styles.css';
 import userEvent from '@testing-library/user-event';
 function Navbar() {
 
-  const {user} = useContext(userContext);
-  
+  const {user , theme} = useContext(userContext);
+
 
   const [showMobileNav, setShowMobileNav] = useState(false);
   return (<>
-    <div className='navbar-cont' >
+    <div className='navbar-cont' style={{backgroundColor : (theme) ? "#f9f9f9" : '#0a1931'}}  >
       <motion.h2
 
         initial={{
@@ -33,6 +33,7 @@ function Navbar() {
           type: 'spring'
         }}
 
+        style={{ color : (theme) ? "#0a1931" : '#F9f9f9'}}
       >
         Habit-O(n)
       </motion.h2>
@@ -41,14 +42,14 @@ function Navbar() {
         animate = {{opacity :1 , y:0}}
         transition = {{delay :0.7}}
       >
-        <Link to="/"> <span> <FaHome /> &nbsp; Home </span> </Link>
-        <Link to="/explore"> <span> <FaCompass /> &nbsp; Explore </span> </Link>
-        {(user.auth && <Link to="/explore"> <span> <FaCalendarAlt /> &nbsp; Habits </span> </Link> )}
+        <Link to="/" style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaHome /> &nbsp; Home </span> </Link>
+        <Link to="/explore"style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaCompass /> &nbsp; Explore </span> </Link>
+        {(user.auth && <Link to="/explore"style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaCalendarAlt /> &nbsp; Habits </span> </Link> )}
 
         {
           (user.auth) ? 
-          <Link to="/signin" > <span> <FaUser/> &nbsp; {(user.name.length > 13) ? `${user.name.substring(0,15)}...` : user.name} </span> </Link> :
-          <Link to="/signin" id='signup-btn' > <span> <FaUserPlus /> &nbsp; Sign In/Up </span> </Link>
+          <Link to="/signin" style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaUser/> &nbsp; {(user.name.length > 13) ? `${user.name.substring(0,15)}...` : user.name} </span> </Link> :
+          <Link to="/signin" id='signup-btn' style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaUserPlus /> &nbsp; Sign In/Up </span> </Link>
         }
       </motion.div>
 
@@ -70,13 +71,14 @@ function Navbar() {
         animate={{scale :1, rotate: "0deg"}} 
         exit={{x:100 ,rotate:"-180deg" }}
         transition = {{duration : 0.6}}
+        style = {{color : theme ? '#154ab1' : '#f9f9f9'}}
         ><FaBars/></motion.div> )
         }
         </AnimatePresence>
       </div>
     </div>
     <AnimatePresence>
-    {showMobileNav && <Mobilenav key={'hello'} closeMobileNav={setShowMobileNav} />}
+    {showMobileNav && <Mobilenav key={'hello'} theme={theme} closeMobileNav={setShowMobileNav} />}
     </AnimatePresence>
   </>)
 
