@@ -5,7 +5,7 @@ import AddHabitImage from '../usedImages/addHabitPageImage.svg'
 import ErrorContext from '../Contexts/ErrorContext';
 import UserContext from '../Contexts/UserAndThemeContext'
 import { FaTimesCircle ,FaCalendarPlus } from 'react-icons/fa';
-import {motion  ,AnimatePresence, calcLength} from 'framer-motion'
+import {motion  ,AnimatePresence} from 'framer-motion'
 import Loader from './Loader';
 
 
@@ -138,24 +138,54 @@ function AddHabitPage({toggleModal , theme}) {
   // console.log(habitData);
   return (
     <>
-      <div className="add-modal-holder">
-      <form className='add-modal-card sofi' onSubmit={handleAddHabitSubmit} >
+      <motion.div className="add-modal-holder"
+        style={{
+          backgroundColor : theme ? 'rgba(249, 249, 249, 0.7)' : 'rgba(10, 25, 49, 0.7)'
+        }}
+        initial = {{opacity : 0}}
+        animate=  {{opacity : 1}}
+        exit =    {{opacity : 0, transition : { delay : 0.8} }}
+        
+      >
+      <motion.form className='add-modal-card sofi' onSubmit={handleAddHabitSubmit} 
+        style = {{  backgroundColor : theme ? '#f9f9f9' : '#081427' }}
+        initial = {{scale : 0.2 , y : -600}}
+        animate = {{scale :1 , y : 0}}
+        exit = {{scale :0.2 , y : 600}}
+        transition = {{ duration : 0.5  ,type : 'tween'}}
+      >
           <div align='center'>
             <img draggable='false' id='add-habit-image' src={AddHabitImage} alt="!oopps" />
           </div>
 
           <div className="add-input-field">
-            <label htmlFor="hname">Habit Name</label>
-            <input type="text" placeholder='habit name' id='hname' autoComplete='off' required spellCheck='false' name='habit_name' value={habitData.habit_name} onChange={handleHabitData} />
+            <label htmlFor="hname"
+              style={{ color : theme ? '#154ab1' : '#f9f9f9' }}
+            >Habit Name</label>
+            <input type="text" placeholder='habit name' id='hname' autoComplete='off' required spellCheck='false' name='habit_name' value={habitData.habit_name} onChange={handleHabitData}
+              style = {{
+                color : theme? '#0a1931' : '#e6e6e6',
+                backgroundColor : theme ? '#e6e6e6' : '#0a1931'
+              }}
+            />
           </div>
 
           <div className="add-input-field">
-            <label htmlFor="hdesc">Habit Description</label>
-            <textarea placeholder='Describe your habit here' rows={3} name="habit_description" autoComplete='off' id="hdesc" required spellCheck='false' value={habitData.habit_description} onChange={handleHabitData} ></textarea>
+            <label htmlFor="hdesc"
+              style={{ color : theme ? '#154ab1' : '#f9f9f9' }}
+            >Habit Description</label>
+            <textarea placeholder='Describe your habit here' rows={3} name="habit_description" autoComplete='off' id="hdesc" required spellCheck='false' value={habitData.habit_description} onChange={handleHabitData} 
+              style = {{
+                color : theme? '#0a1931' : '#e6e6e6',
+                backgroundColor : theme ? '#e6e6e6' : '#0a1931'
+              }}
+            ></textarea>
           </div>
 
           <div className="add-input-field">
-            <label htmlFor="hdesc">Pick Days per Week</label>
+            <label
+              style={{ color : theme ? '#154ab1' : '#f9f9f9' }}
+            >Pick Days per Week</label>
             <div className="add-days-btns">
               {daysStr.map( (ele , i) => <button className="add-days-btn" key={i} 
                 onClick = {(e) => {
@@ -165,7 +195,8 @@ function AddHabitPage({toggleModal , theme}) {
                 style = {{
                   color : (days[i]) ? '#f9f9f9' : '#0a1931',
                   backgroundColor: (days[i]) ? '#0a1931' : '#e6e6e6',
-                  boxShadow: (days[i]) ? "0px 3px 3px #66d441" : "" 
+                  boxShadow: (days[i]) ? "0px 3px 3px #66d441" : "" ,
+                  transform : (days[i]) ? 'scale(1.15)' : 'scale(1)'
                 }}
               > {ele} </button> )}
             </div>
@@ -173,7 +204,12 @@ function AddHabitPage({toggleModal , theme}) {
           
           <div align='center'>
             {/* <button id='add-submit-btn' > <FaCalendarPlus/> &nbsp; Add Habit </button> */}
-          <button id= 'add-submit-btn' >
+          <button id= 'add-submit-btn' 
+            style = {{ 
+              color : theme ? '#f9f9f9' : '#0a1931',
+              backgroundColor : theme ? '#0a1931' : '#f9f9f9'
+            }}
+          >
             <AnimatePresence mode='wait'>
 
               { (showLoader) ? 
@@ -190,8 +226,8 @@ function AddHabitPage({toggleModal , theme}) {
             e.preventDefault();
             toggleModal();
           } } > <FaTimesCircle/> </button>
-      </form>
-      </div>
+      </motion.form>
+      </motion.div>
     </>
   )
 }

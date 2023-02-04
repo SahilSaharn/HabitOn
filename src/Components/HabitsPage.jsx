@@ -133,7 +133,9 @@ function HabitsPage() {
       </motion.button>
 
     </div>
-    { showAddHabitModal && <AddHabitPage toggleModal= {toggleModal} theme = {theme}/> }
+    <AnimatePresence mode='wait' >
+      { showAddHabitModal && <AddHabitPage toggleModal= {toggleModal} theme = {theme} key='addHabitModal' /> }
+    </AnimatePresence>
     </>
   )
 }

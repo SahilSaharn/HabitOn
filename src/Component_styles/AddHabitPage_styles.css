@@ -5,11 +5,12 @@
     top: 0;
     left: 0;
     background-color: rgba(249, 249, 249, 0.7);
+    background-color: #081427;
     display: flex;
     justify-content: center;
     align-items: baseline;
     backdrop-filter: blur(5px);
-    overflow: scroll;
+    overflow: auto;
 }
 
 .add-modal-card {
@@ -80,7 +81,7 @@
     border: none;
     background-color: #e6e6e6;
     transition: all 0.2s;
-    cursor : pointer;
+    cursor: pointer;
 }
 
 
@@ -105,18 +106,19 @@
     color: #fb3636;
 }
 
-#add-submit-btn{
-    display : flex;
-    font-size :var(--fs-md);
-    color : #f9f9f9;
-    background-color:#0a1931;
-    border :none;
-    font-weight : 600;
-    padding : .3em 1em;
-    border-radius  :15px;
-    cursor : pointer;
-    transition  :all 0.4s;
+#add-submit-btn {
+    display: flex;
+    font-size: var(--fs-md);
+    color: #f9f9f9;
+    background-color: #0a1931;
+    border: none;
+    font-weight: 600;
+    padding: .3em 1em;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.4s;
 }
-#add-submit-btn:hover{
-    color : #e6e6e6;
+
+#add-submit-btn:hover {
+    color: #e6e6e6;
 }
