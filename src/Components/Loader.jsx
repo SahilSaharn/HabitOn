@@ -9,8 +9,9 @@ function Loader(props) {
         transition = {{ duration: 0.5}}
         exit={{ scale : 0 }}
     >
-    <svg viewBox="17.438 8.719 85.124 85.231" shapeRendering="geometricPrecision" textRendering="geometricPrecision"
-        xmlns="http://www.w3.org/2000/svg" fill= {props.color} height={props.height} width={props.width} >
+    <svg viewBox="17.438 8.719 85.124 85.231" shapeRendering="geometricPrecision" xtrendering="geometricPrecision" xmlns="http://www.w3.org/2000/svg" 
+        style = {{fill : props.color , height : props.height , width : props.width}}
+    >
         <g>
             <g>
                 <g id="eJd7tVDmZWg4_tr" transform="translate(59.513901,52.074999) rotate(0)">

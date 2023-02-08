@@ -1,0 +1,100 @@
+.some-red {
+    color: red;
+}
+
+.delete-habit-modal-cont {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    overflow: auto;
+    z-index: 101;
+}
+
+.delete-habit-modal-card {
+    width: clamp(300px, 80vw, 1000px);
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 10px 38px 11px rgba(10, 25, 49, 0.2);
+    -moz-box-shadow: 0px 10px 38px 11px rgba(10, 25, 49, 0.2);
+    box-shadow: 0px 10px 38px 11px rgba(10, 25, 49, 0.2);
+    padding: clamp(.5rem, 3vw, 1.5rem);
+    position: relative;
+}
+
+.delete-habit-modal-content {
+    display: flex;
+    align-items: center;
+    font-size: var(--fs-md);
+    font-weight: 500;
+}
+
+.delete-habit-modal-content>span {
+    color: red;
+}
+
+.delete-modal-btns {
+    display: flex;
+    justify-content: end;
+    gap: .7rem;
+    margin-top: clamp(1rem, 7vmin, 3rem);
+    margin-bottom: .5rem;
+}
+
+.delete-modal-btns>button {
+    display: flex;
+    font-size: var(--fs-md);
+    padding: .35em .6em;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.delete-modal-btns>button:first-child {
+    background-color: #0a1931;
+    color: #f9f9f9;
+    border: 2px solid #f9f9f9;
+    transition: all 0.2s;
+}
+
+.delete-modal-btns>button:first-child:hover {
+    color: #ff4c4c;
+    border: 2px solid #ff4c4c;
+}
+
+.delete-modal-btns>button:nth-child(2) {
+    background-color: #f9f9f900;
+    color: #fb3636;
+    border: 2px solid #fb3636;
+    transition: all 0.2s;
+}
+
+.delete-modal-btns>button:nth-child(2):hover {
+    box-shadow: 0px 0px 20px #fb3636;
+}
+
+.loader-cont {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+}
+
+@media (width < 500px) {
+    .delete-modal-btns {
+        justify-content: center;
+    }
+
+    .hidicon {
+        display: none;
+    }
+}

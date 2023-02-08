@@ -5,10 +5,11 @@ function UserAndThemeStates(props) {
   const [user ,setUser] = useState({
     auth : false,
     name : "",
-    email : "",
+    email : "sahilsaharn2003@gmail.com",
     gotCode : false,
     verifiedCode : false,
-    forgotPass : false
+    forgotPass : false,
+    userHabits : []
   })
 
   const [theme ,setTheme] = useState(true);
@@ -17,8 +18,21 @@ function UserAndThemeStates(props) {
     setTheme( (prev) => !prev )
   } 
 
+  const removeUserHabit = (i) => {
+    if( i >= user.userHabits.length || i < 0){
+      return;
+    }
+    let newUserHabits = user.userHabits
+    //splice modifies the orignal array rather than returning the new array...
+    newUserHabits.splice(i , 1)
+    setUser( prev => ({
+      ...prev,
+      userHabits : newUserHabits
+    }) )
+  }
+
   return (
-    <userContext.Provider value={{user, setUser , theme , toggleTheme}} >
+    <userContext.Provider value={{user, setUser , theme , toggleTheme , removeUserHabit}} >
        {props.children}
     </userContext.Provider>
   )

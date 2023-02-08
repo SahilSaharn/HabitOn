@@ -1,0 +1,96 @@
+.today-modal-holder {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    backdrop-filter: blur(5px);
+    overflow: auto;
+    z-index: 101;
+}
+
+
+.today-sched-card {
+    width: clamp(300px, 90vw, 800px);
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 10px 38px 11px rgba(10, 25, 49, 0.2);
+    -moz-box-shadow: 0px 10px 38px 11px rgba(10, 25, 49, 0.2);
+    box-shadow: 0px 10px 38px 11px rgba(10, 25, 49, 0.2);
+    padding: clamp(.5rem, 3vw, 1.5rem);
+    /* margin-top: clamp(5rem, 15vw, 9rem); */
+    margin-block: clamp(3rem, 10vw, 4rem);
+    position: relative;
+}
+
+.to-do-list-eles-cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(.7em, 1vw, 1.5em);
+    background-color: rgba(249, 249, 249, 0.05);
+    border-radius: 10px;
+    margin-block: clamp(.5rem, 10vmin, 1.5rem);
+}
+
+.to-do-list-eles-cont>h4 {
+    font-size: var(--fs-md);
+    display: flex;
+}
+
+.to-do-list-btn-cont>button {
+    font-size: var(--fs-md);
+    padding: 0.1em;
+    cursor: pointer;
+    border: none;
+    background-color: #f9f9f900;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.to-do-list-btn-cont>button:nth-child(1) {
+    color: #66d441;
+    text-shadow: 2px 2px #333;
+    margin-right: clamp(.5rem, 1vw, 1.5rem);
+}
+
+.to-do-list-btn-cont>button:nth-child(1):hover {
+    filter: drop-shadow(0px 0px 10px #66d441);
+    transform: scale(1.2);
+}
+
+.to-do-list-btn-cont>button:nth-child(2) {
+    color: #fb3636;
+}
+
+.to-do-list-btn-cont>button:nth-child(2):hover {
+    filter: drop-shadow(0px 0px 10px #fb3636);
+    transform: scale(1.1);
+}
+
+#close-today-modal-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: .1em;
+    font-size: var(--fs-lg);
+    background-color: #f9f9f900;
+    border: none;
+    cursor: pointer;
+    color: #154ab1;
+    transition: all 0.2s;
+}
+
+#close-today-modal-btn :hover {
+    color: #fb3636;
+}
+
+#to-do-image {
+    width: max(13rem, 37%);
+}
+
+.testdibv {
+    background-color: red;
+}

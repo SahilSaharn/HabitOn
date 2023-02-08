@@ -4,24 +4,23 @@
     height: 100vh;
     top: 0;
     left: 0;
-    background-color: rgba(249, 249, 249, 0.7);
-    background-color: #081427;
     display: flex;
     justify-content: center;
     align-items: baseline;
     backdrop-filter: blur(5px);
     overflow: auto;
+    z-index: 101;
 }
 
 .add-modal-card {
     width: clamp(300px, 60vw, 900px);
-    background-color: #f9f9f9;
     border-radius: 20px;
     -webkit-box-shadow: 0px 10px 38px 11px rgba(10, 25, 49, 0.2);
     -moz-box-shadow: 0px 10px 38px 11px rgba(10, 25, 49, 0.2);
     box-shadow: 0px 10px 38px 11px rgba(10, 25, 49, 0.2);
     padding: clamp(.5rem, 3vw, 1.5rem);
-    margin-top: clamp(5rem, 15vw, 9rem);
+    /* margin-top: clamp(5rem, 15vw, 9rem); */
+    margin-block: clamp(3rem, 10vw, 4rem);
     position: relative;
 }
 

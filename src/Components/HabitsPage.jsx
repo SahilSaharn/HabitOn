@@ -3,21 +3,30 @@ import "../Component_styles/HabitsPage_styles.css"
 import { FaCalendarPlus ,FaCalendarDay , FaCalendar ,FaAngleDoubleRight ,FaCalendarTimes ,FaSun ,FaMoon } from "react-icons/fa";
 import Clock from './Clock';
 import userContext from '../Contexts/UserAndThemeContext';
+import ErrorContext from '../Contexts/ErrorContext';
 import AddHabitPage from './AddHabitPage';
+import TodayScheduleModal from './TodayScheduleModal';
+import DeleteHabitModal from './DeleteHabitModal'
+import Loader from './Loader';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AnimatePresence , motion } from 'framer-motion';
 
 
-function Cards({theme}) {
+function Cards({theme, index , hname , score , hid ,removeHabit }) {
 
   return (
-    <>
-      <div className="habit-card sofi"
-        style = {{backgroundColor : theme ? '#f9f9f9' : '#f9f9f909'}}
+      <motion.div className="habit-card sofi"
+        style   = {{backgroundColor : theme ? '#f9f9f9' : '#f9f9f909'}}
+        initial = {{opacity : 0 , scale : 0}}
+        animate = {{opacity : 1 , scale : 1}}
+        transition = {{delay : (index+1)* 0.2 }}
+        layoutId = {hid}
+        exit    = {{opacity : 0 , scale : 0 ,transition : {duration : 0.5}}}
       >
         <h4 className='habit-title'
           style= { {color : theme ? '#0a1931' : '#f9f9f9'} }
-        > <FaCalendar/> &nbsp; Habit number 3 </h4>
+        > <FaCalendar/> &nbsp; { hname.length > 25 ? `${hname.substring(0,25)}...` : hname} </h4>
         <div className="score-cont">
           <h6 style= { {color : theme ? '#0a1931' : '#f9f9f9'} } >
             Score
@@ -28,12 +37,12 @@ function Cards({theme}) {
             borderColor : theme ? '#0a1931' : '#f9f9f9'
           } } 
           >
-            <div className="progress-bar" style={{backgroundColor : theme ? '#0a1931' : '#f9f9f9'}} >
+            <div className="progress-bar" style={{backgroundColor : theme ? '#0a1931' : '#f9f9f9', width : `${score}%`}} >
               
             </div>
           </div>
           <h6 style= { {color : theme ? '#0a1931' : '#f9f9f9'} } >
-            50%
+            {score}%
           </h6>
         </div>
 
@@ -43,21 +52,38 @@ function Cards({theme}) {
             style= {{
               color : theme ? '#0a1931' : '#e6e6e6',
               borderColor : theme ? '#0a1931' : '#e6e6e6'
-            }} 
+            }}
+            onClick = { ()=>{
+              removeHabit( {i : index , habit_name : hname , habit_id : hid} )
+            } }
           > <FaCalendarTimes/> </button>
         </div>
-      </div>
-    </>
+      </motion.div>
   );
   
 }
 
+function LoaderPage(){
+  return(
+    <>
+    <div className="big-loader-container">
+      <Loader color={'#0a1931'} width= {'clamp(3.81rem, 4.1vw + 2.79rem, 7.71rem)'} hieght ={'clamp(3.81rem, 4.1vw + 2.79rem, 7.71rem)'} />
+    </div>
+    </>
+  )
+}
+
 function HabitsPage() {
 
-  const {user , theme ,toggleTheme } = useContext(userContext);
+  const {user ,setUser, theme ,toggleTheme } = useContext(userContext);
+  const {addError} = useContext(ErrorContext);
   const redirect = useNavigate();
   
-  const [showAddHabitModal , setShowAddHabitModal ] = useState(false);
+  const [showAddHabitModal , setShowAddHabitModal ] = useState( false );
+  const [showTodayScheduleModal , setShowTodayScheduleModal] = useState( false );
+  const [showBigLoader , setShowBigLoader ] = useState(true);
+  const [removingHabitData , setRemovingHabitData] = useState({})
+  const [errorData , setErrorData] = useState({});
 
   // useEffect ( () => {
   //   console.log(user)
@@ -66,38 +92,109 @@ function HabitsPage() {
   //   }
   // } ,[])
 
-  const toggleModal = () => {
+  useEffect(()=>{
+    if(errorData.message){
+        addError(errorData.message , errorData.type)
+    }
+  } , [errorData]);
+
+  useEffect(()=>{
+
+    const userHabitData = ( async () => {
+      try{
+        const headers = {
+          'Content-Type': 'application/json',
+          'Authorization': process.env.REACT_APP_API_KEY
+        };
+
+        const {data} = await axios.get( `http://localhost:5050/get_user_habits/${user.email}` , {headers})
+        console.log(data)
+        setErrorData( {message : data.message ,type : data.type } )
+        //setting context here...
+        setUser( (prev) => ({
+          ...prev,
+          userHabits : data.habitData
+        }) )
+
+      } catch(e){
+        console.log(e)
+        if("response" in e){
+          // console.log(e.response.data)
+          setErrorData( {message : e.response.data.message ,type : e.response.data.type } )
+        } else {
+          setErrorData( {message : e.message ,type : false } )
+        }
+      }
+      setShowBigLoader(false)
+    } )();
+
+  } , [] )
+
+  const toggleAddHabitModal = () => {
     document.body.style.overflow =  (showAddHabitModal) ? 'auto' : 'hidden'
     setShowAddHabitModal(!showAddHabitModal)
   }
 
+  const toggleTodayScheduleModal = () => {
+    document.body.style.overflow =  (showTodayScheduleModal) ? 'auto' : 'hidden'
+    setShowTodayScheduleModal(!showTodayScheduleModal)
+  }
+  
+  console.log(user)
   return (
     <>
-    <div style={{ backgroundColor : (theme) ? "#f9f9f9" : '#0a1931' , hieght :'100vh' , padding :'.01em'}} >
+
+    { (showBigLoader) ? <LoaderPage/> : (
+
+    <div style={{ backgroundColor : (theme) ? "#f9f9f9" : '#0a1931' , hieght :'100vh' , padding :'.01em'}} className='hfull' >
       <div className="main-habits-cont">
         <h2 className="your-habits-title sofi" style={{color : (theme) ? '#0a1931' : '#f9f9f9'}} >
           Your Habit's
         </h2>
         <Clock itsColor = {(theme) ? "rgba(10, 25, 49, 0.5)" : '#e6e6e6'} />
         
-        <div className="habit-grid" >
-          <Cards theme={theme} />
-          <Cards theme={theme} />
-          <Cards theme={theme} />
-          <Cards theme={theme} />
-          <Cards theme={theme} />
-          <Cards theme={theme} />
-          <Cards theme={theme} />
-          <Cards theme={theme} />
-        </div>
+        <AnimatePresence mode ='wait'>
+        { 
+          ( user.userHabits.length < 1) ? (
+            <motion.h2 className='no-data-title' 
+              key = 'no-data-key'
+              style = {{color : theme ? "rgba(10, 25, 49, 0.5)" : 'rgba(230, 230, 230, 0.5)' }}
+              initial ={{opacity : 0 , scale :0}}
+              animate = {{opacity : 1 , scale :1}}
+              exit = {{opacity : 0 , scale :0}}
+            >
+              No Habits !
+            </motion.h2>
+            ) : (
+            <div className="habit-grid" key='habit-grid-key' >
+              <AnimatePresence>
+                { user.userHabits.map( (ele , i) => 
+                    <Cards 
+                      key=   {ele.habit_id} 
+                      theme= {theme} 
+                      hname= {ele.habit_name} 
+                      score ={ele.score} 
+                      index= {i} 
+                      hid=   {ele.habit_id}
+                      removeHabit = {setRemovingHabitData}
+                    />
+                  )  
+                }
+              </AnimatePresence>        
+            </div>
+          ) 
+        }
+        </AnimatePresence>
 
         {/* here we will have a cards container and cards inside it ... */}
 
         <div className="add-and-schedule-btns">
-          <button id="todayScheduleBtn" className={ (theme) ? 'today-sched-light' : 'today-sched-dark' } >
+          <button id="todayScheduleBtn" className={ (theme) ? 'today-sched-light' : 'today-sched-dark' } 
+            onClick = {toggleTodayScheduleModal}
+          >
              <FaCalendarDay/> &nbsp; <span> Today Schedule </span> 
           </button>
-          <button id="addHabitBtn" onClick={ toggleModal } > <FaCalendarPlus/> &nbsp; <span> Add Habit </span> </button>
+          <button id="addHabitBtn" onClick={ toggleAddHabitModal } > <FaCalendarPlus/> &nbsp; <span> Add Habit </span> </button>
         </div>
       </div>
 
@@ -132,10 +229,24 @@ function HabitsPage() {
 
       </motion.button>
 
+      
+
     </div>
-    <AnimatePresence mode='wait' >
-      { showAddHabitModal && <AddHabitPage toggleModal= {toggleModal} theme = {theme} key='addHabitModal' /> }
+
+    ) }
+
+
+    <AnimatePresence>
+      { showAddHabitModal && <AddHabitPage toggleModal= {toggleAddHabitModal} theme = {theme}  key='addHabitModal' /> }
     </AnimatePresence>
+    <AnimatePresence>
+      {showTodayScheduleModal && <TodayScheduleModal toggleModal = {toggleTodayScheduleModal} theme = {theme}/> }
+    </AnimatePresence>
+    <AnimatePresence>
+    { "i" in removingHabitData && <DeleteHabitModal habit_name={removingHabitData.habit_name} habit_i ={removingHabitData.i} habit_id = {removingHabitData.habit_id} toggleModal={setRemovingHabitData} theme = {theme} />}
+    </AnimatePresence>
+    
+
     </>
   )
 }
