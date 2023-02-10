@@ -12,7 +12,7 @@ import Loader from './Loader';
 function AddHabitPage({toggleModal , theme}) {
 
   const {addError} = useContext(ErrorContext);
-  const {user} = useContext(UserContext); 
+  const {user , setUser} = useContext(UserContext);
 
   const [habitData, setHabitData] = useState({
     habit_name : "",
@@ -52,8 +52,8 @@ function AddHabitPage({toggleModal , theme}) {
       setErrorData({message : "Name Must contain alphabets" , type : false})
       setShowLoader(false);
       return;
-    } else if( habitData.habit_name.length > 40 ){
-      setErrorData({message : "Name tooo Long MaxCharacter's(40)" , type : false})
+    } else if( habitData.habit_name.length > 50 ){
+      setErrorData({message : "Name tooo Long MaxCharacter's(50)" , type : false})
       setShowLoader(false);
       return;
     } else if( habitData.habit_name.trim().length <= 5 ){
@@ -99,11 +99,34 @@ function AddHabitPage({toggleModal , theme}) {
         'Authorization': process.env.REACT_APP_API_KEY
       };
 
-      const res = await axios.post('http://localhost:5050/add_habit' , req_body , {headers})
-      console.log(res)
-      if(res.data.type){
-        setErrorData({message : `Habit : ${res.data.habit_name} has been added successfully` , type : res.data.type})
+      const {data} = await axios.post('http://localhost:5050/add_habit' , req_body , {headers})
+      console.log(data);
+      if(data.type){
+        setErrorData({message : `Habit : ${data.addedHabit.habit_name} has been added successfully` , type : data.type})
         //after adding habit we change context here ...
+        
+        const days_map = {
+          0: 'Sunday',
+          1: 'Monday',
+          2: 'Tuesday',
+          3: 'Wednesday',
+          4: 'Thursday',
+          5: 'Friday',
+          6: 'Saturday'
+        }
+        
+        let newTodayHabits = user.todayHabits
+        const currDay = days_map[new Date().getDay()]
+        if(data.addedHabit.daysOn.indexOf(currDay) > -1){
+          newTodayHabits.push(data.addedHabit)
+        }
+        console.log(newTodayHabits)
+        setUser (prev => ({
+          ...prev,
+          userHabits : [...prev.userHabits , data.addedHabit],
+          todayHabits : newTodayHabits
+        }))
+
         setTimeout( ()=> toggleModal() ,2000 );
       }
       

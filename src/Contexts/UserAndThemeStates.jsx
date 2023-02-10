@@ -4,12 +4,13 @@ function UserAndThemeStates(props) {
     // here we can define our data which needs to be passed to children's
   const [user ,setUser] = useState({
     auth : false,
-    name : "",
+    name : "sahil saharn",
     email : "sahilsaharn2003@gmail.com",
     gotCode : false,
     verifiedCode : false,
     forgotPass : false,
-    userHabits : []
+    userHabits : [],
+    todayHabits : []
   })
 
   const [theme ,setTheme] = useState(true);
@@ -31,8 +32,17 @@ function UserAndThemeStates(props) {
     }) )
   }
 
+  const removeTodayHabit = (i) => {
+    if( i >= user.todayHabits.length || i < 0){
+      return;
+    }
+    let newTodayHabits = user.todayHabits
+    newTodayHabits.splice(i , 1)
+    setUser( ( prev  => ({...prev , todayHabits : newTodayHabits}) ) ) 
+  }
+
   return (
-    <userContext.Provider value={{user, setUser , theme , toggleTheme , removeUserHabit}} >
+    <userContext.Provider value={{user, setUser , theme , toggleTheme , removeUserHabit , removeTodayHabit}} >
        {props.children}
     </userContext.Provider>
   )

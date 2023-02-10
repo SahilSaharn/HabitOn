@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { AnimatePresence , motion } from 'framer-motion';
 
 
-function Cards({theme, index , hname , score , hid ,removeHabit }) {
+function Cards({ theme, index , hname , score , hid , removeHabit }) {
 
   return (
       <motion.div className="habit-card sofi"
@@ -111,9 +111,24 @@ function HabitsPage() {
         console.log(data)
         setErrorData( {message : data.message ,type : data.type } )
         //setting context here...
+        //getTodayday
+        const days_map = {
+          0: 'Sunday',
+          1: 'Monday',
+          2: 'Tuesday',
+          3: 'Wednesday',
+          4: 'Thursday',
+          5: 'Friday',
+          6: 'Saturday'
+        }
+      
+        const currDay = days_map[new Date().getDay()]
+        //currDay will have a string of currday...
+        const todayHabits = data.habitData.filter( (ele) => ele.daysOn.indexOf(currDay) > -1 )
         setUser( (prev) => ({
           ...prev,
-          userHabits : data.habitData
+          userHabits : data.habitData,
+          todayHabits : todayHabits
         }) )
 
       } catch(e){
@@ -246,7 +261,6 @@ function HabitsPage() {
     { "i" in removingHabitData && <DeleteHabitModal habit_name={removingHabitData.habit_name} habit_i ={removingHabitData.i} habit_id = {removingHabitData.habit_id} toggleModal={setRemovingHabitData} theme = {theme} />}
     </AnimatePresence>
     
-
     </>
   )
 }

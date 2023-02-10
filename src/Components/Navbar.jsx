@@ -43,12 +43,12 @@ function Navbar() {
         transition = {{delay :0.7}}
       >
         <Link to="/" style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaHome /> &nbsp; Home </span> </Link>
-        <Link to="/explore"style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaCompass /> &nbsp; Explore </span> </Link>
-        {(user.auth && <Link to="/explore"style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaCalendarAlt /> &nbsp; Habits </span> </Link> )}
+        <Link to="/explore" style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaCompass /> &nbsp; Explore </span> </Link>
+        {(user.auth && <Link to={`/habits/${user.name.replace(/\s/g, "_")}`} style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaCalendarAlt /> &nbsp; Habits </span> </Link> )}
 
         {
           (user.auth) ? 
-          <Link to="/signin" style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaUser/> &nbsp; {(user.name.length > 13) ? `${user.name.substring(0,15)}...` : user.name} </span> </Link> :
+          <Link to={`/profile/${user.name.replace(/\s/g, "_")}`} style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaUser/> &nbsp; {(user.name.length > 13) ? `${user.name.substring(0,15)}...` : user.name} </span> </Link> :
           <Link to="/signin" id='signup-btn' style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaUserPlus /> &nbsp; Sign In/Up </span> </Link>
         }
       </motion.div>
