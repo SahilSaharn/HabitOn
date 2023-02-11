@@ -78,7 +78,7 @@ function HabitsPage() {
   const {user ,setUser, theme ,toggleTheme } = useContext(userContext);
   const {addError} = useContext(ErrorContext);
   const redirect = useNavigate();
-  
+
   const [showAddHabitModal , setShowAddHabitModal ] = useState( false );
   const [showTodayScheduleModal , setShowTodayScheduleModal] = useState( false );
   const [showBigLoader , setShowBigLoader ] = useState(true);
@@ -110,8 +110,10 @@ function HabitsPage() {
         const {data} = await axios.get( `http://localhost:5050/get_user_habits/${user.email}` , {headers})
         console.log(data)
         setErrorData( {message : data.message ,type : data.type } )
+        
         //setting context here...
         //getTodayday
+
         const days_map = {
           0: 'Sunday',
           1: 'Monday',
@@ -144,6 +146,7 @@ function HabitsPage() {
     } )();
 
   } , [] )
+
 
   const toggleAddHabitModal = () => {
     document.body.style.overflow =  (showAddHabitModal) ? 'auto' : 'hidden'

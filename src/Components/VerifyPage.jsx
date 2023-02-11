@@ -19,15 +19,15 @@ function VerifyPage() {
 
   const redirect = useNavigate();
 
-  useEffect( () => {
-    // console.log('re - render');
-    if(!user.gotCode){
-      redirect('/signup')
-    }
-    if(user.verifiedCode){
-      redirect('/register')
-    }
-  } ,[user])
+  // useEffect( () => {
+  //   // console.log('re - render');
+  //   if(!user.gotCode){
+  //     redirect('/signup')
+  //   }
+  //   if(user.verifiedCode){
+  //     redirect('/register')
+  //   }
+  // } ,[user])
 
   useEffect(()=>{
     if(errorData.message){
@@ -51,12 +51,12 @@ function VerifyPage() {
           'Content-Type': 'application/json',
           'Authorization': process.env.REACT_APP_API_KEY
       };
-      const {data} = await axios.post('http://localhost:5050/verify_code' , {email : email ,code} ,{headers})
+
+      const {data} = await axios.post('http://localhost:5050/verify_code' , {email : user.email ,code} ,{headers})
       // console.log(data)
       if(data.type){
         setErrorData({message : `Verified ${data.message}` , type: data.type})
-        setUser( (prev) => ({...prev , verifiedCode : true}) )
-        
+        setTimeout( () => setUser( (prev) => ({...prev , verifiedCode : true}) ) , 2500 )
       } else {
         setErrorData({message :  data.message , type: data.type})
       }

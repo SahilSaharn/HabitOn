@@ -5,8 +5,9 @@ import ErrorContext from '../Contexts/ErrorContext'
 import Loader from './Loader'
 import registerImg from '../usedImages/undraw_account_re_o7id.svg'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import axios from 'axios'
-import {FaEye ,FaEyeSlash ,FaExchangeAlt} from "react-icons/fa";
+import {FaEye ,FaEyeSlash ,FaExchangeAlt , FaAngleDoubleRight} from "react-icons/fa";
 import {motion  ,AnimatePresence} from 'framer-motion'
 
 const checkString = (str) => {
@@ -35,16 +36,25 @@ const checkString = (str) => {
   return( {message : "" , ans :true} )
 }
 
-
 function RegisterUserPage() {
-  
+  const {user} = useContext(userContext)
+  const redirect = useNavigate();
+
+  if(user.auth){
+    redirect(`/habits/${user.name.replace(/\s/g, "_")}`)
+    return ( <RegisteredPage user = {user} /> )
+  } else {
+    return ( <RegisterPage/> )
+  }
+}
+
+function RegisterPage() {
   const {addError} = useContext(ErrorContext);
   const {user , setUser} = useContext(userContext);
 
   const [showLoader, setShowLoader] = useState(false);
   const [errorData , setErrorData] = useState({});
   const [type , setType] = useState('password');
-  const redirect = useNavigate();
 
   const [formData ,setFormData] = useState({
     email : user.email,
@@ -54,18 +64,6 @@ function RegisterUserPage() {
     gender : "Male",
     dob : ""
   })
-
-  useEffect( ()=>{
-
-    if(!user.gotCode){
-      redirect("/signup")
-    } else if(!user.verifiedCode){
-      redirect(`/verify/${user.email}`)
-    } else if(user.verifiedCode){
-      //from here we will direct user to its...
-    }
-
-  } , [user])
   
   //to show the error...
   useEffect(()=>{
@@ -161,14 +159,18 @@ function RegisterUserPage() {
       const res = await axios.post('http://localhost:5050/register_user' , req_body , {headers})
       console.log(res);
       if(res.data.type){
+
         setErrorData( {message : res.data.message ,type :res.data.type } )
         //means we registered user correctly and set the user context here...
-        setUser( prev => ({
-          ...prev,
-          auth : true,
-          name : req_body.name,
-          email : req_body.email
-        }) )
+        setTimeout(() => {
+          setUser( prev => ({
+            ...prev,
+            auth : true,
+            name : req_body.name,
+            email : req_body.email
+          }) )
+        }, 2500);
+
       } else {
         setErrorData( {message : res.data.message ,type :res.data.type } )
       }
@@ -262,6 +264,17 @@ function RegisterUserPage() {
                 </motion.form>
             </div>
         </motion.div>
+    </>
+  )
+}
+
+function RegisteredPage({user}){
+  return (
+    <>
+    <div className='all-incenter sofi' >
+      {/* <h2> hello world </h2> */}
+      <Link className='habits-link' to ={`/habits/${user.name.replace(/\s/g, "_")}`} > Your Habits &nbsp; <FaAngleDoubleRight/> </Link>
+    </div>
     </>
   )
 }

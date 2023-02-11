@@ -140,6 +140,32 @@ input[type=number] {
     color: rgba(10, 25, 49, 0.7);
 }
 
+.all-incenter{
+    display :flex;
+    align-items : center;
+    justify-content : center;
+    width : 100%;
+    height: 100vh;
+    background-color : #0a1931;
+}
+
+.habits-link{
+    text-decoration : none;
+    text-transform : capitalize;
+    display : flex;
+    align-items:center;
+    justify-content : center;
+    font-weight : bold;
+    font-size : var(--fs-lg);
+    color : #f9f9f990;
+    transition : all 0.3s;
+}
+
+.habits-link:hover{
+    color : #f9f9f9;
+}
+
+
 #changeGender {
     font-size: var(--fs-base);
     cursor: pointer;

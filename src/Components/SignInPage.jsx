@@ -3,7 +3,7 @@ import "../Component_styles/SignInPage_styles.css"
 import userContext from '../Contexts/UserAndThemeContext'
 import ErrorContext from '../Contexts/ErrorContext'
 import Loader from './Loader';
-import {FaEye ,FaEyeSlash } from "react-icons/fa";
+import {FaEye ,FaEyeSlash ,FaAngleDoubleRight } from "react-icons/fa";
 import {motion  ,AnimatePresence} from 'framer-motion'
 import signInmage from "../usedImages/loginSvg.svg"
 import { useNavigate ,Link } from 'react-router-dom';
@@ -36,8 +36,20 @@ const checkString = (str) => {
 }
 
 function SignInPage() {
+  const { user } = useContext(userContext)
+  const redirect = useNavigate()
+
+  if(user.auth){
+    redirect(`/habits/${user.name.replace(/\s/g, "_")}`)
+    return ( <SignInedPage user={user} /> )
+  } else {
+    return ( <SignIn_Page/> )
+  }
+}
+
+function SignIn_Page(){
   const {addError} = useContext(ErrorContext);
-  const {user , setUser} = useContext(userContext);
+  const {setUser} = useContext(userContext);
   
   const [showLoader, setShowLoader] = useState(false);
   const [errorData , setErrorData] = useState({});
@@ -48,13 +60,12 @@ function SignInPage() {
 
   const [type , setType] = useState('password');
 
-  const redirect = useNavigate();
+  // const redirect = useNavigate();
 
-  useEffect( () => {
-    if(user.auth){
-      redirect(`/habits/${user.name.replace(/\s/g, "_")}`)
-    }
-  } , [user])
+  // useEffect( () => {
+  //   if(user.auth){
+  //   }
+  // } , [user])
 
   useEffect(()=>{ 
     if(errorData.message){
@@ -106,14 +117,17 @@ function SignInPage() {
       const res = await axios.post('http://localhost:5050/verify_user_creds' , req_body , {headers})
       console.log(res.data);
       if(res.data.type){
+
         setErrorData( {message : res.data.message ,type :res.data.type } )
         //means user authentecated right correctly set user here...
-        setUser( (prev) =>({
-          ...prev,
-          auth : true,
-          email : res.data.email,
-          name : res.data.name,
-        }) )
+        setTimeout( () => {
+          setUser( (prev) => ({
+            ...prev,
+            auth : true,
+            email : res.data.email,
+            name : res.data.name,
+          }) )
+        }  ,2500)
         
       } else {
         setErrorData( {message : res.data.message ,type :res.data.type } )
@@ -132,7 +146,7 @@ function SignInPage() {
 
     setShowLoader(false);
   }
-  console.log(user)
+  // console.log(user)
   return (
     <>
         <motion.div
@@ -176,6 +190,16 @@ function SignInPage() {
                 </motion.form>
             </div>
         </motion.div>
+    </>
+  )
+}
+
+function SignInedPage({user}){
+  return( 
+    <>
+    <div className='all-incenter sofi' >
+      <Link className='habits-link' to ={`/habits/${user.name.replace(/\s/g, "_")}`} > Your Habits &nbsp; <FaAngleDoubleRight/> </Link>
+    </div>
     </>
   )
 }

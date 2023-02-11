@@ -4,8 +4,8 @@ function UserAndThemeStates(props) {
     // here we can define our data which needs to be passed to children's
   const [user ,setUser] = useState({
     auth : false,
-    name : "sahil saharn",
-    email : "sahilsaharn2003@gmail.com",
+    name : "",
+    email : "",
     gotCode : false,
     verifiedCode : false,
     forgotPass : false,

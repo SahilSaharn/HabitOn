@@ -14,7 +14,7 @@ function ErrorState(props) {
     if (errors.length > 0) {
       timeoutId = setTimeout(() => {
         setErrors((prevArray) => prevArray.slice(1));
-      }, 3000);
+      }, 2000);
     }
     return () => clearTimeout(timeoutId);
   }, [errors]);

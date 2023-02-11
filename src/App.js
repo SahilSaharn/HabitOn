@@ -9,10 +9,11 @@ import UserAndThemeStates from './Contexts/UserAndThemeStates';
 import VerifyPage from './Components/VerifyPage';
 import RegisterUserPage from './Components/RegisterUserPage';
 import SignInPage from './Components/SignInPage';
+import HabitWrapper from './Components/HabitWrapper';
 
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import HabitsPage from './Components/HabitsPage';
+import PageNotFoundPage from './Components/PageNotFoundPage';
 function App() {
 
   const location = useLocation();
@@ -28,10 +29,9 @@ function App() {
               <Routes location={location} key={location.pathname} >
                 <Route path='/' element={<LandingPage />} />
                 <Route path='/signup' element={<SignUpPage />} />
-                <Route path='/verify/:email' element={<VerifyPage />} />
-                <Route path='/register' element={<RegisterUserPage />} />
                 <Route path='/signin' element={<SignInPage />} />
-                <Route path='/habits/:email' element={<HabitsPage />} />
+                <Route path='/habits/:email' element={<HabitWrapper />} />
+                <Route path='*' element={<PageNotFoundPage />} />
               </Routes>
             </AnimatePresence>
 

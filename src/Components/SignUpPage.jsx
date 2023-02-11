@@ -5,10 +5,25 @@ import ErrorContext from '../Contexts/ErrorContext'
 import userContext from '../Contexts/UserAndThemeContext';
 import mailImage from "../usedImages/mail_illustartion.png"
 import Loader from './Loader'
+
+import VerifyPage from './VerifyPage';
+import RegisterUserPage from './RegisterUserPage';
+
 import { AnimatePresence, motion } from 'framer-motion'
 import "../Component_styles/SignUpPage_styles.css"
 
 function SignUpPage() {
+    const {user} = useContext(userContext)
+    if(user.gotCode && user.verifiedCode){
+        return (< RegisterUserPage />)
+    } else if( user.gotCode ){
+        return (< VerifyPage />)
+    } else {
+        return ( <SignUpComponent/> )
+    }
+}
+
+function SignUpComponent() {
     const cont = useContext(ErrorContext);
     const {user , setUser} = useContext(userContext);
     //funtion and state fr our input field...
@@ -17,7 +32,7 @@ function SignUpPage() {
     const [showLoader, setShowLoader] = useState(false);
     const [errorData , setErrorData] = useState({});
 
-    const redirect = useNavigate();
+    // const redirect = useNavigate();
 
     useEffect(()=>{
         if(errorData.message){
@@ -25,18 +40,22 @@ function SignUpPage() {
         }
     } , [errorData]);
 
-    useEffect( ()=>{
-        if (user.gotCode) {
-            setErrorData({message : "Verification code sent success : Redirecting to verify page     " , type : true});
-            const timeoutId = setTimeout(() => {
-              redirect(`/verify/${user.email}`);
-            }, 2000);
-            return () => clearTimeout(timeoutId);
-        }
-    } ,[user.gotCode , redirect] )
+    // useEffect( ()=>{
+    //     if (user.gotCode) {
+    //         setErrorData({message : "Verification code sent success : Redirecting to verify page     " , type : true});
+    //         const timeoutId = setTimeout(() => {
+    //           redirect(`/verify/${user.email}`);
+    //         }, 2000);
+    //         return () => clearTimeout(timeoutId);
+    //     }
+    // } ,[user.gotCode , redirect] )
 
     const getMail = (e) => {
-        setMail(e.target.value)
+        if(showLoader){
+            return
+        } else {
+            setMail(e.target.value)
+        }
     }
 
     // console.log(mail);
@@ -55,15 +74,17 @@ function SignUpPage() {
         else setShowLoader(true);
         
         try{
+
             const headers = {
                 'Content-Type': 'application/json',
                 'Authorization': process.env.REACT_APP_API_KEY
             };
+
             const {data} = await axios.post('http://localhost:5050/generate_code' , {email : mail} ,{headers})
             if(data.type){
                 //means its true...
-                // setErrorData({message : data.message , type : data.type});
-                setUser( (prev) => ({...prev , gotCode : true , email : mail}) );
+                setErrorData({message : data.message , type : data.type});
+                setTimeout( () => setUser( (prev) => ({...prev , gotCode : true , email : mail}) ) , 2500 );
             }
             
         } catch(e) {
