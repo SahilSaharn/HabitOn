@@ -1,7 +1,3 @@
-.some-red {
-    color: red;
-}
-
 .delete-habit-modal-cont {
     position: fixed;
     width: 100%;
@@ -14,6 +10,7 @@
     backdrop-filter: blur(5px);
     overflow: auto;
     z-index: 101;
+    color : #bfc42e;
 }
 
 .delete-habit-modal-card {

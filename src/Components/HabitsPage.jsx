@@ -15,6 +15,14 @@ import { AnimatePresence , motion } from 'framer-motion';
 
 function Cards({ theme, index , hname , score , hid , removeHabit }) {
 
+  let barColor = '#f9f9f9'
+  if( score < 40){
+    barColor = '#fb3636'
+  } else if(  score > 70 ){
+    barColor = '#66d441'
+  } else {
+    barColor = '#e8ec17'
+  }
   return (
       <motion.div className="habit-card sofi"
         style   = {{backgroundColor : theme ? '#f9f9f9' : '#f9f9f909'}}
@@ -37,7 +45,7 @@ function Cards({ theme, index , hname , score , hid , removeHabit }) {
             borderColor : theme ? '#0a1931' : '#f9f9f9'
           } } 
           >
-            <div className="progress-bar" style={{backgroundColor : theme ? '#0a1931' : '#f9f9f9', width : `${score}%`}} >
+            <div className="progress-bar" style={{backgroundColor : barColor , width : `${score}%`}} >
               
             </div>
           </div>
@@ -85,13 +93,7 @@ function HabitsPage() {
   const [removingHabitData , setRemovingHabitData] = useState({})
   const [errorData , setErrorData] = useState({});
 
-  // useEffect ( () => {
-  //   console.log(user)
-  //   if(!user.auth){
-  //     redirect('/signin')
-  //   }
-  // } ,[])
-
+  
   useEffect(()=>{
     if(errorData.message){
         addError(errorData.message , errorData.type)

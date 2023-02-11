@@ -27,7 +27,7 @@
     font-size : var(--fs-lg);
 }
 
-.all-incenter > div > a {
+.all-incenter > div > span > a {
     text-decoration : none;
     text-transform : capitalize;
     display : flex;
@@ -40,7 +40,11 @@
     transition : all 0.3s;
 }
 
-.all-incenter > div > a:hover{
+.all-incenter > div > span{
+    display:  inline-block;
+}
+
+.all-incenter > div > span > a:hover{
     color : #f9f9f9;
 }
 

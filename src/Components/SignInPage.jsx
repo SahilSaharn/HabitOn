@@ -60,13 +60,6 @@ function SignIn_Page(){
 
   const [type , setType] = useState('password');
 
-  // const redirect = useNavigate();
-
-  // useEffect( () => {
-  //   if(user.auth){
-  //   }
-  // } , [user])
-
   useEffect(()=>{ 
     if(errorData.message){
         addError(errorData.message , errorData.type)
