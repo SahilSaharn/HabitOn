@@ -9,6 +9,7 @@ function UserAndThemeStates(props) {
     gotCode : false,
     verifiedCode : false,
     forgotPass : false,
+    forgorPassVerifiedCode :false,
     userHabits : [],
     todayHabits : []
   })

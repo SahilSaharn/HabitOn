@@ -39,12 +39,27 @@
     color : #f9f9f990;
     transition : all 0.3s;
 }
+.all-incenter > div > a {
+    text-decoration : none;
+    text-transform : capitalize;
+    display : flex;
+    align-items:center;
+    justify-content : center;
+    font-weight : bold;
+    font-size : var(--fs-base);
+    margin-top: 1rem;
+    color : #f9f9f990;
+    transition : all 0.3s;
+}
 
 .all-incenter > div > span{
     display:  inline-block;
 }
 
 .all-incenter > div > span > a:hover{
+    color : #f9f9f9;
+}
+.all-incenter > div > a:hover{
     color : #f9f9f9;
 }
 

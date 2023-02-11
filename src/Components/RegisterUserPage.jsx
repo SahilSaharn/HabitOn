@@ -169,7 +169,7 @@ function RegisterPage() {
             name : req_body.name,
             email : req_body.email
           }) )
-        }, 2500);
+        }, 1000);
 
       } else {
         setErrorData( {message : res.data.message ,type :res.data.type } )

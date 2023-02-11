@@ -117,10 +117,13 @@ function SignIn_Page(){
           setUser( (prev) => ({
             ...prev,
             auth : true,
+            gotCode : false,
+            verifiedCode : false,
+            forgotPass : false,
             email : res.data.email,
             name : res.data.name,
           }) )
-        }  ,2500)
+        }  ,1000)
         
       } else {
         setErrorData( {message : res.data.message ,type :res.data.type } )
@@ -177,7 +180,7 @@ function SignIn_Page(){
 
                     <div className="sign-in-links-cont">
                       <Link to='/signup' className="sign-in-link">Sign Up</Link>
-                      <Link to='/forgotPass' className="sign-in-link">Forgot Password ?</Link>
+                      <Link to='/forgotpassword' className="sign-in-link">Forgot Password ?</Link>
                     </div>
                     
                 </motion.form>

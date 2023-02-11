@@ -1,10 +1,11 @@
 import React , {useContext, useState ,useEffect} from 'react'
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,Link } from "react-router-dom";
 import axios from 'axios'
 import ErrorContext from '../Contexts/ErrorContext'
 import userContext from '../Contexts/UserAndThemeContext';
 import mailImage from "../usedImages/mail_illustartion.png"
 import Loader from './Loader'
+import { FaAngleDoubleRight } from "react-icons/fa";
 
 import VerifyPage from './VerifyPage';
 import RegisterUserPage from './RegisterUserPage';
@@ -14,10 +15,17 @@ import "../Component_styles/SignUpPage_styles.css"
 
 function SignUpPage() {
     const {user} = useContext(userContext)
+    const redirect = useNavigate()
+
+    if(user.auth){
+        redirect(`/habits/${user.name.replace(/\s/g, "_")}`)
+        return (<SignInedPage user = {user} />)
+    }
+
     if(user.gotCode && user.verifiedCode){
         return (< RegisterUserPage />)
     } else if( user.gotCode ){
-        return (< VerifyPage />)
+        return (< VerifyPage usedFor={false} />)
     } else {
         return ( <SignUpComponent/> )
     }
@@ -31,8 +39,7 @@ function SignUpComponent() {
     const [mail ,setMail] = useState("");
     const [showLoader, setShowLoader] = useState(false);
     const [errorData , setErrorData] = useState({});
-
-    // const redirect = useNavigate();
+    const [mailExist , setMailExist] = useState(false);
 
     useEffect(()=>{
         if(errorData.message){
@@ -40,17 +47,11 @@ function SignUpComponent() {
         }
     } , [errorData]);
 
-    // useEffect( ()=>{
-    //     if (user.gotCode) {
-    //         setErrorData({message : "Verification code sent success : Redirecting to verify page     " , type : true});
-    //         const timeoutId = setTimeout(() => {
-    //           redirect(`/verify/${user.email}`);
-    //         }, 2000);
-    //         return () => clearTimeout(timeoutId);
-    //     }
-    // } ,[user.gotCode , redirect] )
-
     const getMail = (e) => {
+        if(mailExist){
+            //means user changed the exisiting mail so then we will let them make a request...
+            setMailExist(false)
+        }
         if(showLoader){
             return
         } else {
@@ -58,8 +59,6 @@ function SignUpComponent() {
         }
     }
 
-    // console.log(mail);
-    // habit-0(n)*gurjass-2015^<sahil>!jaiMataDi... [api_key]...
     const formSubbed= async (e) => {
         e.preventDefault();
         // console.log('making request');
@@ -67,12 +66,16 @@ function SignUpComponent() {
         if(user.gotCode){
             setErrorData({message : "Code Already Has been sent" , type : true});
             return;
+        } else if (mailExist) {
+            setErrorData({message : "Email Already In Use !" , type : false});
+            return;
         }
 
         if(showLoader)
             return;
         else setShowLoader(true);
         
+        console.log('making request')
         try{
 
             const headers = {
@@ -84,13 +87,17 @@ function SignUpComponent() {
             if(data.type){
                 //means its true...
                 setErrorData({message : data.message , type : data.type});
-                setTimeout( () => setUser( (prev) => ({...prev , gotCode : true , email : mail}) ) , 2500 );
+                setTimeout( () => setUser( (prev) => ({...prev , gotCode : true , email : mail}) ) , 1000 );
             }
             
         } catch(e) {
+            
             if("response" in e){
-                // console.log(e.response.data)
+                console.log(e.response.data)
                 setErrorData( {message : e.response.data.message ,type : e.response.data.type } )
+                if(e.response.data.message === "Email Already In Use !" ){
+                    setMailExist(true)
+                }
             } else {
                 setErrorData( {message : e.message ,type : false } )
             }
@@ -136,6 +143,16 @@ function SignUpComponent() {
             </div>
         </motion.div>
     </>
+    )
+}
+
+function SignInedPage({user}){
+    return( 
+      <>
+      <div className='all-incenter sofi' >
+        <Link className='habits-link' to ={`/habits/${user.name.replace(/\s/g, "_")}`} > Your Habits &nbsp; <FaAngleDoubleRight/> </Link>
+      </div>
+      </>
     )
 }
 

@@ -8,13 +8,14 @@ import mailSentImage from '../usedImages/mailSentimage.png'
 import axios from 'axios';
 import "../Component_styles/VerifyPage_styles.css"
 
-function VerifyPage() {
-
+function VerifyPage({usedFor}) {
+  //in the verify page if usedFor is true we will update the [forgorPassVerifiedCode] this prop to true else we will update verifiedCode in user context ...
   const {user , setUser} = useContext(userContext);
   const {addError} = useContext(ErrorContext);
   const [errorData , setErrorData] = useState({});
   const [showLoader, setShowLoader] = useState(false);
   const [code ,setCode] = useState("");
+  const [incorrectCode , setIncorrectCode] = useState(false);
   const {email} = useParams();
 
   const redirect = useNavigate();
@@ -35,6 +36,7 @@ function VerifyPage() {
     }
   } , [errorData]);
 
+
   const verifyCode = async (e) => {
     e.preventDefault()
 
@@ -43,8 +45,13 @@ function VerifyPage() {
       return;
     }
 
-    setShowLoader( true )
+    if(incorrectCode){
+      setErrorData({message :  "Incorrect Code :(" , type: false})
+      return;
+    }
 
+    setShowLoader( true )
+    console.log('making request .. .. .')
     try{
 
       const headers = {
@@ -56,14 +63,22 @@ function VerifyPage() {
       // console.log(data)
       if(data.type){
         setErrorData({message : `Verified ${data.message}` , type: data.type})
-        setTimeout( () => setUser( (prev) => ({...prev , verifiedCode : true}) ) , 2500 )
+        if(usedFor){
+          setTimeout( () => setUser( (prev) => ({...prev , forgorPassVerifiedCode : true , verifiedCode : false}) ) , 1000 )
+        } else {
+          setTimeout( () => setUser( (prev) => ({...prev , verifiedCode : true , forgorPassVerifiedCode : false}) ) , 1000 )
+        }
       } else {
         setErrorData({message :  data.message , type: data.type})
       }
       
     } catch(e) {
+      // console.log(e.response.data)
       if("response" in e){
         setErrorData({message :  e.response.data.message , type :e.response.data.type})
+        if(e.response.data.message === 'Incorrect Code :('){
+          setIncorrectCode(true)
+        }
       } else {
         setErrorData({message :  e.message , type:false})
       }
@@ -73,6 +88,9 @@ function VerifyPage() {
   }
 
   const handleCode = (e) =>{
+    if(incorrectCode){
+      setIncorrectCode(false)
+    }
     if(e.target.value.length > 6)
       return;
     else setCode( () => parseInt(e.target.value , 10) );
@@ -95,10 +113,10 @@ function VerifyPage() {
                     <div align='center'>
                         <img draggable='false' id='imageCard' src={mailSentImage} alt="!oopps" />
                     </div>
-                    <p className="text">Verification code sent to {email} check your inbox or spam folder to get your code.</p>
+                    <p className="text">Verification code sent to {user.email} check your inbox or spam folder to get your code.</p>
                     <div className="input-field">
                         <label htmlFor="code">Code</label>
-                        <input type="number" min="100000" required max="999999" autoComplete='off' id="code" value={code} onChange={handleCode} />
+                        <input type="number" min="100000" required max="999999" autoComplete='off' id="code" value={String(code)} onChange={handleCode} />
                     </div>
                     <button>
                     <AnimatePresence mode='wait'>

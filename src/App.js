@@ -6,11 +6,9 @@ import ErrorComponent from './Components/ErrorComponent';
 import ErrorState from './Contexts/ErrorState';
 import SignUpPage from './Components/SignUpPage';
 import UserAndThemeStates from './Contexts/UserAndThemeStates';
-import VerifyPage from './Components/VerifyPage';
-import RegisterUserPage from './Components/RegisterUserPage';
 import SignInPage from './Components/SignInPage';
 import HabitWrapper from './Components/HabitWrapper';
-
+import ForgotPassPage from './Components/ForgotPassPage';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import PageNotFoundPage from './Components/PageNotFoundPage';
@@ -30,6 +28,7 @@ function App() {
                 <Route path='/' element={<LandingPage />} />
                 <Route path='/signup' element={<SignUpPage />} />
                 <Route path='/signin' element={<SignInPage />} />
+                <Route path='/forgotpassword' element={<ForgotPassPage />} />
                 <Route path='/habits/:email' element={<HabitWrapper />} />
                 <Route path='*' element={<PageNotFoundPage />} />
               </Routes>
