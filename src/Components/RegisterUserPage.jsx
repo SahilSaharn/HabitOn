@@ -271,10 +271,13 @@ function RegisterPage() {
 function RegisteredPage({user}){
   return (
     <>
-    <div className='all-incenter sofi' >
+    <motion.div className='all-incenter sofi' 
+      initial = {{opacity: 0}}
+      animate = {{opacity: 1}}
+    >
       {/* <h2> hello world </h2> */}
       <Link className='habits-link' to ={`/habits/${user.name.replace(/\s/g, "_")}`} > Your Habits &nbsp; <FaAngleDoubleRight/> </Link>
-    </div>
+    </motion.div>
     </>
   )
 }

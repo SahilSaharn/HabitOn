@@ -87,7 +87,7 @@ function SignUpComponent() {
             if(data.type){
                 //means its true...
                 setErrorData({message : data.message , type : data.type});
-                setTimeout( () => setUser( (prev) => ({...prev , gotCode : true , email : mail}) ) , 1000 );
+                setTimeout( () => setUser( (prev) => ({...prev , gotCode : true , email : data.email}) ) , 1000 );
             }
             
         } catch(e) {

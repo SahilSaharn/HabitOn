@@ -6,10 +6,12 @@ import userContext from '../Contexts/UserAndThemeContext';
 import Loader from './Loader'
 import VerifyPage from './VerifyPage'
 import forgotPassImage from "../usedImages/forgotPassImage.svg"
+import NewPassPage from './NewPassPage';
+import "../Component_styles/SignInPage_styles.css"
+
 
 import { motion , AnimatePresence } from 'framer-motion';
 import { FaAngleDoubleRight } from "react-icons/fa";
-
 
 function ForgotPassPage() {
     const {user} = useContext(userContext)
@@ -22,7 +24,7 @@ function ForgotPassPage() {
 
     //and if both verified is true and forgot pass is true then we will give the update pass page...
     if( user.forgotPass && user.forgorPassVerifiedCode ){
-        return( <ChangePass/> )
+        return( <NewPassPage email={user.email} /> )
     } else if(user.forgotPass){
         return ( <VerifyPage usedFor={true} />)
     } else {
@@ -47,6 +49,7 @@ function ForgetPassComponent (){
     } , [errorData]);
   
     const getMail = (e) => {
+
       if(mailDoesNotExist){
           setMailDoesNotExist(false)
       }
@@ -55,6 +58,7 @@ function ForgetPassComponent (){
       } else {
           setMail(e.target.value)
       }
+
     }
   
     const handleMailSubmit = async (e) => {
@@ -80,6 +84,7 @@ function ForgetPassComponent (){
       //our post request here...
       console.log('making req.....')
       try{
+        
           const headers = {
               'Content-Type': 'application/json',
               'Authorization': process.env.REACT_APP_API_KEY
@@ -94,12 +99,11 @@ function ForgetPassComponent (){
               setTimeout( ()=> setUser( prev => ({
                   ...prev,
                   forgotPass : true,
-                  email : mail
+                  email : data.email
               }) )  ,1000)
           } else {
               //mens req was success but something else went wrong
               setErrorData({message : data.message , type : data.type});
-  
           }
   
       } catch (e) {
@@ -155,18 +159,18 @@ function SignInedPage({user}){
     )
 }
 
-function ChangePass (){
-    return (
-    <>
-        <h2>change pass here</h2>
-        <h2>change pass here</h2>
-        <h2>change pass here</h2>
-        <h2>change pass here</h2>
-        <h2>change pass here</h2>
-        <h2>change pass here</h2>
-        <h2>change pass here</h2>
-    </>
-    )
-}
+// function ChangePass (){
+//     return (
+//     <>
+//         <h2>change pass here</h2>
+//         <h2>change pass here</h2>
+//         <h2>change pass here</h2>
+//         <h2>change pass here</h2>
+//         <h2>change pass here</h2>
+//         <h2>change pass here</h2>
+//         <h2>change pass here</h2>
+//     </>
+//     )
+// }
 
 export default ForgotPassPage
