@@ -48,10 +48,10 @@ function Mobilenav(props) {
       >
         <Link to="/" onClick={closeMobileNav}> <span> <FaHome /> Home </span> </Link>
         <Link to="/explore" onClick={closeMobileNav}> <span> <FaCompass /> Explore </span> </Link>
-        { (user.auth) && <Link to="/" onClick={closeMobileNav}> <span> <FaCalendarAlt /> Habits </span> </Link> }
+        { (user.auth) && <Link to={`/habits/${user.name.replace(/\s/g, "_")}`} onClick={closeMobileNav}> <span> <FaCalendarAlt /> Habits </span> </Link> }
         {
           (user.auth) ? 
-          <Link to="/userhabits" onClick={closeMobileNav}> <span> <FaUser /> {(user.name.length > 13) ? `${user.name.substring(0,15)}...` : user.name} </span> </Link> :
+          <Link to="/profile" onClick={closeMobileNav}> <span> <FaUser /> {(user.name.length > 13) ? `${user.name.substring(0,15)}...` : user.name} </span> </Link> :
           <Link to="/signin" onClick={closeMobileNav}> <span> <FaUserPlus /> Sign In/Up </span> </Link> 
         }
         {/* <Link to="/signin" onClick={closeMobileNav}> <span> <FaUserPlus /> Sign In/Up </span> </Link> */}

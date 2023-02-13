@@ -150,7 +150,7 @@ function NewPassPage({email}) {
                           <label htmlFor="new-pass">New Password</label>
                           <div className='pass-field'>
                             <input type={type} placeholder='new password'  required autoComplete='off' id="new-pass" name='newPassword' onChange={handlePassFields} value={passData.newPassword} />
-                            <button className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
+                            <button type='button' className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
                           </div>
                       </div>
 
@@ -158,13 +158,13 @@ function NewPassPage({email}) {
                           <label htmlFor="confirm-new-pass">Confirm New Password</label>
                           <div className='pass-field'>
                             <input type={type} placeholder='confirm new password'  required autoComplete='off' id="confirm-new-pass" name='ConfirmNewPassword' onChange={handlePassFields} value={passData.ConfirmNewPassword} />
-                            <button className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
+                            <button type='button' className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
                           </div>
                       </div>
   
-                      <button>
+                      <button type='submit' > 
                       <AnimatePresence mode='wait'>
-                          { (showLoader) ? <Loader color={'#f9f9f9'} hieght={'1.6rem'} width= {'1.6rem'} key={1} /> : <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:1}} key={2} >Sign In</motion.div> }
+                          { (showLoader) ? <Loader color={'#f9f9f9'} hieght={'1.6rem'} width= {'1.6rem'} key={1} /> : <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:1}} key={2} >Reset Password</motion.div> }
                       </AnimatePresence>
                       </button>
                         

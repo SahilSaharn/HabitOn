@@ -225,14 +225,14 @@ function RegisterPage() {
                         <label htmlFor="pass">Password</label>
                         <div className='pass-field ' >
                           <input type={type} placeholder='password'  onChange={handleFormData}  required autoComplete='off' id="pass" name='password'  />
-                          <button className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
+                          <button type='button' className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
                         </div>
                     </div>
                     <div className="input-field">
                         <label htmlFor="cpass">Confirm Password</label>
                         <div className='pass-field ' >
                           <input type={type} placeholder='password'  onChange={handleFormData}  required autoComplete='off' id="cpass" name='cpassword'  />
-                          <button className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
+                          <button type='button' className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
                         </div>
                     </div>
 
@@ -244,7 +244,7 @@ function RegisterPage() {
                               backgroundColor : (formData.gender === 'Male') ? '#87cefa' : '#ffb6c1'
                             }}  
                           />
-                          <button className='show-pass-icon' onClick={handleGender} > <FaExchangeAlt/> </button>
+                          <button type='button' className='show-pass-icon' onClick={handleGender} > <FaExchangeAlt/> </button>
                         </div>
                     </div>
                   

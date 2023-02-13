@@ -168,11 +168,11 @@ function SignIn_Page(){
                         <label htmlFor="pass">Password</label>
                         <div className='pass-field'>
                           <input type={type} placeholder='password'  required autoComplete='off' id="pass" name='password' value={userCreds.password} onChange={handleUserCreds}  />
-                          <button className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
+                          <button type='button' className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
                         </div>
                     </div>
 
-                    <button>
+                    <button type='submit' >
                     <AnimatePresence mode='wait'>
                         { (showLoader) ? <Loader color={'#f9f9f9'} hieght={'1.6rem'} width= {'1.6rem'} key={1} /> : <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:1}} key={2} >Sign In</motion.div> }
                     </AnimatePresence>

@@ -15,6 +15,7 @@ function UserAndThemeStates(props) {
   })
 
   const [theme ,setTheme] = useState(true);
+  const [gotData , setGotData] = useState(false);
   //true means white and false means dark mode...
   const toggleTheme = ( ) => {
     setTheme( (prev) => !prev )
@@ -24,9 +25,16 @@ function UserAndThemeStates(props) {
     if( i >= user.userHabits.length || i < 0){
       return;
     }
+
     let newUserHabits = user.userHabits
     //splice modifies the orignal array rather than returning the new array...
-    newUserHabits.splice(i , 1)
+    const removed_habit = newUserHabits.splice(i , 1)[0]
+    console.log(removed_habit)
+    const toRemove_i = user.todayHabits.findIndex( (habit) => habit.habit_id === removed_habit.habit_id )
+    if( toRemove_i > -1){
+      removeTodayHabit(toRemove_i)
+    }
+    
     setUser( prev => ({
       ...prev,
       userHabits : newUserHabits
@@ -37,13 +45,14 @@ function UserAndThemeStates(props) {
     if( i >= user.todayHabits.length || i < 0){
       return;
     }
+
     let newTodayHabits = user.todayHabits
     newTodayHabits.splice(i , 1)
     setUser( ( prev  => ({...prev , todayHabits : newTodayHabits}) ) ) 
   }
 
   return (
-    <userContext.Provider value={{user, setUser , theme , toggleTheme , removeUserHabit , removeTodayHabit}} >
+    <userContext.Provider value={{user, setUser , theme , toggleTheme , removeUserHabit , removeTodayHabit , gotData ,setGotData }} >
        {props.children}
     </userContext.Provider>
   )

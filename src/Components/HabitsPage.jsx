@@ -23,6 +23,7 @@ function Cards({ theme, index , hname , score , hid , removeHabit }) {
   } else {
     barColor = '#e8ec17'
   }
+  
   return (
       <motion.div className="habit-card sofi"
         style   = {{backgroundColor : theme ? '#f9f9f9' : '#f9f9f909'}}
@@ -83,7 +84,7 @@ function LoaderPage(){
 
 function HabitsPage() {
 
-  const {user ,setUser, theme ,toggleTheme } = useContext(userContext);
+  const {user ,setUser, theme ,toggleTheme , gotData ,setGotData} = useContext(userContext);
   const {addError} = useContext(ErrorContext);
   const redirect = useNavigate();
 
@@ -102,7 +103,8 @@ function HabitsPage() {
 
   useEffect(()=>{
 
-    const userHabitData = ( async () => {
+    const fetchUserData = async () => {
+
       try{
         const headers = {
           'Content-Type': 'application/json',
@@ -129,6 +131,7 @@ function HabitsPage() {
         const currDay = days_map[new Date().getDay()]
         //currDay will have a string of currday...
         const todayHabits = data.habitData.filter( (ele) => ele.daysOn.indexOf(currDay) > -1 )
+        setGotData(true)
         setUser( (prev) => ({
           ...prev,
           userHabits : data.habitData,
@@ -144,10 +147,14 @@ function HabitsPage() {
           setErrorData( {message : e.message ,type : false } )
         }
       }
-      setShowBigLoader(false)
-    } )();
+      
+    }
+    setShowBigLoader(false)
+    if(gotData === false){
+      fetchUserData()
+    }
 
-  } , [] )
+  } , [gotData] )
 
 
   const toggleAddHabitModal = () => {
@@ -228,7 +235,6 @@ function HabitsPage() {
         initial = {{ opacity: 0 , x : 100 }}
         animate = {{ opacity: 1  , x : 0}}
         transition = {{ duration : 1  ,delay : 1}}
-
       >
         <AnimatePresence mode='wait' >
         { theme ?
