@@ -114,6 +114,12 @@ function SignIn_Page(){
         setErrorData( {message : res.data.message ,type :res.data.type } )
         //means user authentecated right correctly set user here...
         setTimeout( () => {
+
+          //setting user info in session storage...
+          sessionStorage.setItem('auth' , true)
+          sessionStorage.setItem('email' , res.data.email)
+          sessionStorage.setItem('name' , res.data.name)
+
           setUser( (prev) => ({
             ...prev,
             auth : true,
