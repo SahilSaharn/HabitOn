@@ -8,9 +8,11 @@ import SignUpPage from './Components/SignUpPage';
 import UserAndThemeStates from './Contexts/UserAndThemeStates';
 import SignInPage from './Components/SignInPage';
 import HabitWrapper from './Components/HabitWrapper';
+import HabitPage from './Components/HabitPage';
 import ForgotPassPage from './Components/ForgotPassPage';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+
 import PageNotFoundPage from './Components/PageNotFoundPage';
 function App() {
 
@@ -30,6 +32,7 @@ function App() {
                 <Route path='/signin' element={<SignInPage />} />
                 <Route path='/forgotpassword' element={<ForgotPassPage />} />
                 <Route path='/habits/:email' element={<HabitWrapper />} />
+                <Route path='/habit/:index' element={<HabitPage />} />
                 <Route path='*' element={<PageNotFoundPage />} />
               </Routes>
             </AnimatePresence>

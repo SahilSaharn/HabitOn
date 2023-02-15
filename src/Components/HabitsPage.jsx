@@ -9,7 +9,7 @@ import TodayScheduleModal from './TodayScheduleModal';
 import DeleteHabitModal from './DeleteHabitModal'
 import Loader from './Loader';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,Link } from 'react-router-dom';
 import { AnimatePresence , motion } from 'framer-motion';
 
 
@@ -56,15 +56,18 @@ function Cards({ theme, index , hname , score , hid , removeHabit }) {
         </div>
 
         <div className="habit-card-btns-cont">
-          <a href="/" className="open-habit-card-link"> Open &nbsp; <FaAngleDoubleRight/> </a>
+          <Link to={`/habit/${ window.btoa( String(index) ) }`} className="open-habit-card-link"> Open &nbsp; <FaAngleDoubleRight/> </Link>
           <button
+
             style= {{
               color : theme ? '#0a1931' : '#e6e6e6',
               borderColor : theme ? '#0a1931' : '#e6e6e6'
             }}
+
             onClick = { ()=>{
               removeHabit( {i : index , habit_name : hname , habit_id : hid} )
             } }
+
           > <FaCalendarTimes/> </button>
         </div>
       </motion.div>
