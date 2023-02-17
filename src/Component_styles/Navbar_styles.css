@@ -16,7 +16,7 @@
     font-weight: 700;
     font-size: var(--fs-xl);
     padding: 0.5em;
-    margin: 0px 1.5rem;
+    margin: 0px clamp(0rem , 2vw , 3rem);
     color: #103271;
 }
 

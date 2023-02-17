@@ -1,0 +1,39 @@
+.habit-data-cont{
+    margin-top: clamp(6rem , 10vw , 12rem);
+    padding :0px clamp(0.5rem, 5vw ,4rem);
+}
+
+.habit-data-name{
+    font-size: var(--fs-xl);
+    margin-block: clamp(0.5rem , 2vmin , 3rem);
+}
+
+.habit-data-desc{
+    font-size: var(--fs-base);
+    font-weight: 600;
+    padding: .3em .6em;
+    height: clamp(150px , 2vw , 650px);
+    max-width: 1500px;
+    background-color: #e6e6e6;
+    border-radius: 20px;
+    overflow-y: auto;
+}
+
+.habit-data-created-date{
+    font-weight: bold;
+    display: flex;
+    font-size: var(--fs-sm);
+    margin-block: 0.5rem;
+    align-items: center;
+    justify-content: end;
+}
+
+.habit-data-curr-score{
+    font-size: var(--fs-md);
+    display: flex;
+    justify-content: end;
+    margin-block: 1rem;
+}
+.habit-data-curr-score >span{
+    display: flex;
+}
