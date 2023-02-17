@@ -6,6 +6,7 @@
 .habit-data-name{
     font-size: var(--fs-xl);
     margin-block: clamp(0.5rem , 2vmin , 3rem);
+    text-transform : capitalize;
 }
 
 .habit-data-desc{
@@ -14,8 +15,9 @@
     padding: .3em .6em;
     height: clamp(150px , 2vw , 650px);
     max-width: 1500px;
-    background-color: #e6e6e6;
+    background-color : #e6e6e610;
     border-radius: 20px;
+    word-spacing : 3px;
     overflow-y: auto;
 }
 
@@ -34,6 +36,39 @@
     justify-content: end;
     margin-block: 1rem;
 }
+
 .habit-data-curr-score >span{
     display: flex;
 }
+
+
+.habit-data-graph-cont{
+    /* background-color :#e6e6e6; */
+    min-width : 290px;
+    position :relative;
+    border-radius :20px;
+    margin : clamp(1.5rem , 5vmin , 3rem) auto;
+}
+
+.habit-page-loader{
+    display : flex;
+    justify-content :center;
+    align-items : center;
+    border-radius :20px;
+    background-color : #e6e6e610;
+    backdrop-filter : blur(3px);
+    position : absolute;
+    left :0;
+    top :0;
+    width : 100%;
+    height :100%;
+}
+
+.reload-btn{
+    background-color : #e6e6e600;
+    border : none;
+    font-size: 2rem;
+    padding : .5em;
+    cursor :pointer;
+}
+
