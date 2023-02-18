@@ -47,7 +47,7 @@ function Mobilenav(props) {
         }}
       >
         <Link to="/" onClick={closeMobileNav}> <span> <FaHome /> Home </span> </Link>
-        <Link to="/explore" onClick={closeMobileNav}> <span> <FaCompass /> Explore </span> </Link>
+        {/* <Link to="/explore" onClick={closeMobileNav}> <span> <FaCompass /> Explore </span> </Link> */}
         { (user.auth) && <Link to={`/habits/${user.name.replace(/\s/g, "_")}`} onClick={closeMobileNav}> <span> <FaCalendarAlt /> Habits </span> </Link> }
         {
           (user.auth) ? 

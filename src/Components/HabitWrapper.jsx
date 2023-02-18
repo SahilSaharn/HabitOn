@@ -5,7 +5,7 @@ import NotAuthorizedPage from './NotAuthorizedPage';
 import HabitsPage from './HabitsPage';
 
 function HabitWrapper() {
-    const {user , setUser , theme} = useContext(userContext);
+    const {user , setUser } = useContext(userContext);
     useEffect ( ()=> {
 
         const user_auth =  Boolean( sessionStorage.getItem('auth') )

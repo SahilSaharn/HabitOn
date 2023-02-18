@@ -43,7 +43,7 @@ function Navbar() {
         transition = {{delay :0.7}}
       >
         <Link to="/" style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaHome /> &nbsp; Home </span> </Link>
-        <Link to="/explore" style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaCompass /> &nbsp; Explore </span> </Link>
+        {/* <Link to="/explore" style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaCompass /> &nbsp; Explore </span> </Link> */}
         {(user.auth && <Link to={`/habits/${user.name.replace(/\s/g, "_")}`} style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaCalendarAlt /> &nbsp; Habits </span> </Link> )}
 
         {
