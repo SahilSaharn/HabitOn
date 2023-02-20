@@ -10,6 +10,7 @@ import SignInPage from './Components/SignInPage';
 import HabitWrapper from './Components/HabitWrapper';
 import HabitPage from './Components/HabitPage';
 import ForgotPassPage from './Components/ForgotPassPage';
+import LogoutPage from './Components/LogoutPage';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -33,6 +34,7 @@ function App() {
                 <Route path='/forgotpassword' element={<ForgotPassPage />} />
                 <Route path='/habits/:email' element={<HabitWrapper />} />
                 <Route path='/habit/:index' element={<HabitPage />} />
+                <Route path='/logout/:name' element={<LogoutPage />} />
                 <Route path='*' element={<PageNotFoundPage />} />
               </Routes>
             </AnimatePresence>

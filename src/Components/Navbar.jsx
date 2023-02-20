@@ -2,7 +2,7 @@ import React, { useState ,useContext } from 'react'
 import '../Component_styles/Navbar_styles.css'
 import { easeInOut, motion ,AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaHome, FaCompass, FaUserPlus, FaBars, FaTimesCircle ,FaUser ,FaCalendarAlt } from 'react-icons/fa';
+import { FaHome, FaCompass, FaUserPlus, FaBars ,FaPowerOff, FaTimesCircle ,FaUser ,FaCalendarAlt } from 'react-icons/fa';
 import Mobilenav from './Mobilenav';
 import userContext from '../Contexts/UserAndThemeContext';
 import '../Component_styles/Navbar_styles.css';
@@ -48,7 +48,7 @@ function Navbar() {
 
         {
           (user.auth) ? 
-          <Link to={`/profile/${user.name.replace(/\s/g, "_")}`} style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaUser/> &nbsp; {(user.name.length > 13) ? `${user.name.substring(0,15)}...` : user.name} </span> </Link> :
+          <Link to={`/logout/${user.name.replace(/\s/g, "_")}`} style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaPowerOff/> &nbsp; {(user.name.length > 13) ? `${user.name.substring(0,15)}...` : user.name} </span> </Link> :
           <Link to="/signin" id='signup-btn' style={{ color : (theme) ? "#154ab1" : '#F9f9f9'}} > <span> <FaUserPlus /> &nbsp; Sign In/Up </span> </Link>
         }
       </motion.div>

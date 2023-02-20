@@ -3,7 +3,7 @@ import { useParams , useNavigate } from 'react-router-dom';
 import userContext from '../Contexts/UserAndThemeContext';
 import ErrorContext from '../Contexts/ErrorContext';
 import '../Component_styles/HabitPage_styles.css'
-import { FaClock , FaAngry, FaGrinBeamSweat ,FaGrinStars ,FaRedo } from "react-icons/fa";
+import { FaClock , FaAngry, FaGrinBeamSweat,FaInfoCircle ,FaGrinStars ,FaRedo } from "react-icons/fa";
 import { ResponsiveContainer , LineChart , Line ,XAxis ,YAxis ,CartesianGrid, Tooltip } from 'recharts';
 import axios from 'axios';
 import Loader from './Loader';
@@ -172,7 +172,7 @@ function HabitPageComponent (){
           animate = {{y : 0, opacity :1 ,scale :1}}
           transition = {{duration : 0.5 , delay : 0.9}}
         >
-          {habit.description} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur perspiciatis voluptatum officia suscipit molestiae quos maxime adipisci esse, quo cumque unde, ab aliquid quidem? Consectetur nulla omnis quod ducimus? Iure quis laudantium, modi aspernatur veritatis corrupti atque et. Quae pariatur accusantium ex maiores laboriosam a ut ullam natus quos aspernatur.
+          {habit.description}
         </motion.p>
 
         <motion.h4 className="habit-data-curr-score" style = {{color : theme ? '#0a1931' : '#f9f9f9'}} 
@@ -198,6 +198,13 @@ function HabitPageComponent (){
             )
           }
         </div>
+        <motion.h5 className="habit-data-created-date" style = {{color : '#fb3636'}} 
+          initial = {{x : 50 , opacity: 0}}
+          animate = {{x : 0 , opacity: 1}}
+          transition = {{delay : 0.7 , type : 'tween'}}
+        >
+          <FaInfoCircle/> &nbsp; Note : This app Uses UTC timeLine so. Score can be a bit diffrent as per Your Timezone :)
+        </motion.h5>
 
       </div>
 
