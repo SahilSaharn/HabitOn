@@ -1,26 +1,18 @@
 .logout-cont{
     width: 100%;
     height: 100vh;
+    background-color: #0a1931;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* .logout-cont > button{
-    color : #fb3636;
-    padding: 0.3em .5em;
-    border-radius: 20px;
-    border: 3px solid #fb3636;
-} */
-
-
-/* CSS */
 .button-5 {
   align-items: center;
   background-clip: padding-box;
   background-color: #fb3636;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
   color: #fff;
