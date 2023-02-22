@@ -257,7 +257,7 @@ function RegisterPage() {
 
                     <button>
                     <AnimatePresence mode='wait'>
-                        { (showLoader) ? <Loader color={'#f9f9f9'} hieght={'1.6rem'} width= {'1.6rem'} key={1} /> : <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:1}} key={2} >Verify</motion.div> }
+                        { (showLoader) ? <Loader color={'#f9f9f9'} hieght={'1.6rem'} width= {'1.6rem'} key={1} /> : <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:1}} key={2} >Register</motion.div> }
                     </AnimatePresence>
                     </button>
                     

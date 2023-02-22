@@ -19,7 +19,7 @@
   cursor: pointer;
   display: flex;
   font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: var(--fs-lg);
+  font-size: var(--fs-md);
   font-weight: bold;
   justify-content: center;
   line-height: 1.25;
