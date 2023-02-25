@@ -36,8 +36,25 @@ const checkString = (str) => {
 }
 
 function SignInPage() {
-  const { user } = useContext(userContext)
+  const { user ,setUser } = useContext(userContext)
   const redirect = useNavigate()
+
+  useEffect ( ()=> {
+
+      const user_auth =  Boolean( sessionStorage.getItem('auth') )
+      const user_email = sessionStorage.getItem('email' )
+      const user_name = sessionStorage.getItem('name' )
+    
+      if(user_auth && user_email && user_name ){
+          setUser( prev => ({
+              ...prev, 
+              auth : user_auth,
+              name : user_name,
+              email : user_email,
+          }))
+      }
+
+  } , [] )
 
   if(user.auth){
     redirect(`/habits/${user.name.replace(/\s/g, "_")}`)
