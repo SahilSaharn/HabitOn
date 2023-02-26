@@ -105,7 +105,7 @@ function NewPassPage({email}) {
           new_password : passData.newPassword
         }
 
-        const {data} = await axios.put('http://localhost:5050/update_password' , req_body , {headers})
+        const {data} = await axios.put('https://pouncing-iodized-lightyear.glitch.me/update_password' , req_body , {headers})
         if(data.type){
           //means pass updated success...
           setErrorData({message : data.message , type : data.type})

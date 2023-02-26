@@ -2,7 +2,6 @@ import React , {useContext ,useEffect ,useState} from 'react'
 import userContext from '../Contexts/UserAndThemeContext';
 import ErrorContext from '../Contexts/ErrorContext';
 import Loader from './Loader';
-import { useNavigate ,useParams } from 'react-router-dom';
 import { motion ,AnimatePresence } from 'framer-motion';
 import mailSentImage from '../usedImages/mailSentimage.png'
 import axios from 'axios';
@@ -16,9 +15,9 @@ function VerifyPage({usedFor}) {
   const [showLoader, setShowLoader] = useState(false);
   const [code ,setCode] = useState("");
   const [incorrectCode , setIncorrectCode] = useState(false);
-  const {email} = useParams();
+  // const {email} = useParams();
 
-  const redirect = useNavigate();
+  // const redirect = useNavigate();
 
   // useEffect( () => {
   //   // console.log('re - render');
@@ -34,7 +33,7 @@ function VerifyPage({usedFor}) {
     if(errorData.message){
         addError(errorData.message , errorData.type)
     }
-  } , [errorData]);
+  } , [errorData , addError]);
 
 
   const verifyCode = async (e) => {
@@ -59,7 +58,7 @@ function VerifyPage({usedFor}) {
           'Authorization': process.env.REACT_APP_API_KEY
       };
 
-      const {data} = await axios.post('http://localhost:5050/verify_code' , {email : user.email ,code} ,{headers})
+      const {data} = await axios.post('https://pouncing-iodized-lightyear.glitch.me/verify_code' , {email : user.email ,code} ,{headers})
       // console.log(data)
       if(data.type){
         setErrorData({message : `Verified ${data.message}` , type: data.type})

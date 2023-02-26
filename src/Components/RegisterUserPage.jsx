@@ -156,7 +156,7 @@ function RegisterPage() {
         'Authorization': process.env.REACT_APP_API_KEY
       };
 
-      const res = await axios.post('http://localhost:5050/register_user' , req_body , {headers})
+      const res = await axios.post('https://pouncing-iodized-lightyear.glitch.me/register_user' , req_body , {headers})
       console.log(res);
       if(res.data.type){
 

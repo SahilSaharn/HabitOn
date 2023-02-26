@@ -83,7 +83,7 @@ function SignUpComponent() {
                 'Authorization': process.env.REACT_APP_API_KEY
             };
 
-            const {data} = await axios.post('http://localhost:5050/generate_code' , {email : mail} ,{headers})
+            const {data} = await axios.post('https://pouncing-iodized-lightyear.glitch.me/generate_code' , {email : mail} ,{headers})
             if(data.type){
                 //means its true...
                 setErrorData({message : data.message , type : data.type});

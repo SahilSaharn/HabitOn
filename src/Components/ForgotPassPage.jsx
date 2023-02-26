@@ -90,7 +90,7 @@ function ForgetPassComponent (){
               'Authorization': process.env.REACT_APP_API_KEY
           };
   
-          const {data} = await axios.post('http://localhost:5050/forgot_password' , {email : mail} ,{headers})
+          const {data} = await axios.post('https://pouncing-iodized-lightyear.glitch.me/forgot_password' , {email : mail} ,{headers})
           console.log(data)
           if(data.type){
               //means it was success

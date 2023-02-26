@@ -1,70 +1,40 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Habit - O(n)
 
-## Available Scripts
+This is a Full-Stack Mern Stack based application used to track records of your habit so you can see your progress an track it and visualize it using graphs and stay motivated and driven towards more progress 
 
-In the project directory, you can run:
+# Features 
+- Sign IN/UP using Email Verification
+- Create And Delete Habits
+- Graphs To visualize your score as per timeline
+- Secure Backend Express API
+- High - End Form Validation 
+- Secured And Protected Front-end Routes 
+- Smooth Animation's 
+- Custom Modal's 
+- Dark and light Theme Support 
+- Some Custom Illustartion's 
+- Reset Password
 
-### `npm start`
+## Acknowledgements
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ - [Chat - Gpt](https://chat.openai.com/) almost helps you with everything and Helped us to learn every new concept rather than going through youtube video's if aleast gives you  a refrence so you can learn about it from anywhere else in deep if you want to but sometimes server's are boom!
+ - [Recharts](https://recharts.org/) helps you to create charts in react app just give it some styles and data and you're done Awesome library 
+ - [Framer Motion](https://www.framer.com/motion/)  awesome react library to add animation's on enter and exit of a component best and easy to use great docmentation! 
+ - [Undraw Illustrations ](https://undraw.co/) awesome Illustration's and free to use easy to cutomize as per your theme and every scenario covered one place for clean and nice Illustration's 
+ - no Css library Used its all Vanilla.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Screenshots
 
-### `npm test`
+![Screenshot (475)](https://user-images.githubusercontent.com/95131664/221404308-834f0eff-c817-42c8-b939-4aec44c23e2f.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Screenshot (476)](https://user-images.githubusercontent.com/95131664/221404311-0c02b7fa-0e99-47d9-8e8e-707e4382f979.png)
 
-### `npm run build`
+![Screenshot (477)](https://user-images.githubusercontent.com/95131664/221404315-6c1dd94a-70d8-4a46-9af9-a7745935e2c2.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Screenshot (478)](https://user-images.githubusercontent.com/95131664/221404319-ca62b7c1-3a1a-41b2-9a7b-1eb64f5eae01.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Authors
+[![LinkedIn ](https://img.shields.io/badge/sahil's-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sahil-saharn/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[![LinkedIn ](https://img.shields.io/badge/Gurjass's-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gurjaspreet-singh-08995721a/)

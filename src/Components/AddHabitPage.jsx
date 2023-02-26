@@ -99,7 +99,7 @@ function AddHabitPage({toggleModal , theme}) {
         'Authorization': process.env.REACT_APP_API_KEY
       };
 
-      const {data} = await axios.post('http://localhost:5050/add_habit' , req_body , {headers})
+      const {data} = await axios.post('https://pouncing-iodized-lightyear.glitch.me/add_habit' , req_body , {headers})
       console.log(data);
       if(data.type){
         setErrorData({message : `Habit : ${data.addedHabit.habit_name} has been added successfully` , type : data.type})

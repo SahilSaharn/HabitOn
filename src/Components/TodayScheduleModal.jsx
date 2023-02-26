@@ -98,7 +98,7 @@ function TodayScheduleModal( {toggleModal , theme} ) {
         'Authorization': process.env.REACT_APP_API_KEY
       };
 
-      const {data} = await axios.post('http://localhost:5050/add_record' , req_body ,{headers})
+      const {data} = await axios.post('https://pouncing-iodized-lightyear.glitch.me/add_record' , req_body ,{headers})
       //now update the score with got by 
       console.log(data)
       setErrorData( {message : data.message ,type : data.type } )

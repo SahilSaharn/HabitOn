@@ -42,7 +42,7 @@ function DeleteHabitModal({toggleModal , habit_i , habit_id , habit_name , theme
         'Authorization': process.env.REACT_APP_API_KEY
       };
 
-      const {data} = await axios.delete('http://localhost:5050/delete_habit' , {
+      const {data} = await axios.delete('https://pouncing-iodized-lightyear.glitch.me/delete_habit' , {
         data: req_body,
         headers
       })

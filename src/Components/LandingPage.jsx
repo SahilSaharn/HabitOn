@@ -1,8 +1,10 @@
 import React from 'react'
 import "../Component_styles/LandingPage_styles.css"
 import images from '../usedImages/images.js'
-
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { FaGithub , FaLinkedin } from 'react-icons/fa';
+
 
 const leftFadeIn = {
   from : {
@@ -125,7 +127,7 @@ function LandingPage() {
           animate={"to"}
           > 
           <h1> your habits will determine your future. </h1>
-          <motion.a variants={popUp}  href="/" id='enter-now-btn' > change your future now! </motion.a>
+          <Link to={'/signin'} id='enter-now-btn' > change your future now! </Link> 
         </motion.div>
         <motion.img draggable='false' src={ (imgi < images.length) ? images[imgi] : images[0] }
           alt="oops!" 
@@ -166,16 +168,17 @@ function LandingPage() {
           </motion.p>
         </div> 
 
-        <div align="center">
+        {/* <div align="center">
           <motion.a href="/" id="how-to-use-btn" variants= {popUp} initial={'from'} whileInView = {'to'} > how to use Habit O(n) </motion.a>
-        </div>
+        </div> */}
 
         <div className="bottom-btns-container"
           initial = {{ opacity:0 , y : 100 }}
           whileInView = {{opacity :1 , y : 0}}
         >
-          <a href="/" >About us!</a>
-          <a href="/" >Sign up/in</a>
+          <a href = "https://github.com/SahilSaharn/HabitOn" target='__blank' > <FaGithub/> </a>
+          <a href = "https://www.linkedin.com/in/sahil-saharn/" target='__blank' > <FaLinkedin/>  </a>
+          <a href = "https://www.linkedin.com/in/gurjaspreet-singh-08995721a/" target='blank' className='on-right' > <FaLinkedin/>  </a>
         </div>
 
       </div>

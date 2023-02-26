@@ -89,7 +89,7 @@ function HabitPageComponent (){
 
         console.log(req_body);
 
-        const {data} = await axios.get('http://localhost:5050/get_graph_data' , {
+        const {data} = await axios.get('https://pouncing-iodized-lightyear.glitch.me/get_graph_data' , {
           params : {
             habit_id : habit.habit_id,
             creation_date : habit.creation_date,
@@ -100,7 +100,7 @@ function HabitPageComponent (){
 
         console.log(data);
         if(data.type){
-          setErrorData( {message : data.message ,type : data.type } )
+          // setErrorData( {message : data.message ,type : data.type } )
           setGraphData( data.graph_data )
         } else {
           setErrorData( {message : data.message ,type : data.type } )

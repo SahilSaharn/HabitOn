@@ -60,11 +60,11 @@ function SignInPage() {
     redirect(`/habits/${user.name.replace(/\s/g, "_")}`)
     return ( <SignInedPage user={user} /> )
   } else {
-    return ( <SignIn_Page/> )
+    return ( <SignInPageComp/> )
   }
 }
 
-function SignIn_Page(){
+function SignInPageComp(){
   const {addError} = useContext(ErrorContext);
   const {setUser} = useContext(userContext);
   
@@ -81,7 +81,7 @@ function SignIn_Page(){
     if(errorData.message){
         addError(errorData.message , errorData.type)
     }
-  } , [errorData]);
+  } , [errorData ]);
 
   const toggleType = (e) => {
     e.preventDefault();
@@ -124,7 +124,7 @@ function SignIn_Page(){
         'Authorization': process.env.REACT_APP_API_KEY
       };
 
-      const res = await axios.post('http://localhost:5050/verify_user_creds' , req_body , {headers})
+      const res = await axios.post('https://pouncing-iodized-lightyear.glitch.me/verify_user_creds' , req_body , {headers})
       console.log(res.data);
       if(res.data.type){
 

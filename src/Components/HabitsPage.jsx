@@ -109,14 +109,16 @@ function HabitsPage() {
     const fetchUserData = async () => {
 
       try{
+        setShowBigLoader(true)
+
         const headers = {
           'Content-Type': 'application/json',
           'Authorization': process.env.REACT_APP_API_KEY
         };
 
-        const {data} = await axios.get( `http://localhost:5050/get_user_habits/${user.email}` , {headers})
+        const {data} = await axios.get( `https://pouncing-iodized-lightyear.glitch.me/get_user_habits/${user.email}` , {headers})
         console.log(data)
-        setErrorData( {message : data.message ,type : data.type } )
+        // setErrorData( {message : data.message ,type : data.type } )
         
         //setting context here...
         //getTodayday
