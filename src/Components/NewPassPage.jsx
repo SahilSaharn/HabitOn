@@ -150,7 +150,7 @@ function NewPassPage({email}) {
                           <label htmlFor="new-pass">New Password</label>
                           <div className='pass-field'>
                             <input type={type} placeholder='new password'  required autoComplete='off' id="new-pass" name='newPassword' onChange={handlePassFields} value={passData.newPassword} />
-                            <button type='button' className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
+                            <button type='button' className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} onTouchStart={toggleType} onTouchEnd={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
                           </div>
                       </div>
 
@@ -158,7 +158,7 @@ function NewPassPage({email}) {
                           <label htmlFor="confirm-new-pass">Confirm New Password</label>
                           <div className='pass-field'>
                             <input type={type} placeholder='confirm new password'  required autoComplete='off' id="confirm-new-pass" name='ConfirmNewPassword' onChange={handlePassFields} value={passData.ConfirmNewPassword} />
-                            <button type='button' className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
+                            <button type='button' className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} onTouchStart={toggleType} onTouchEnd={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
                           </div>
                       </div>
   

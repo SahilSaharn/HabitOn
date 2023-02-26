@@ -225,14 +225,14 @@ function RegisterPage() {
                         <label htmlFor="pass">Password</label>
                         <div className='pass-field ' >
                           <input type={type} placeholder='password'  onChange={handleFormData}  required autoComplete='off' id="pass" name='password'  />
-                          <button type='button' className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
+                          <button type='button' className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} onTouchStart={toggleType} onTouchEnd={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
                         </div>
                     </div>
                     <div className="input-field">
                         <label htmlFor="cpass">Confirm Password</label>
                         <div className='pass-field ' >
                           <input type={type} placeholder='password'  onChange={handleFormData}  required autoComplete='off' id="cpass" name='cpassword'  />
-                          <button type='button' className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
+                          <button type='button' className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} onTouchStart={toggleType} onTouchEnd={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
                         </div>
                     </div>
 

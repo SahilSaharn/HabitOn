@@ -191,7 +191,7 @@ function SignInPageComp(){
                         <label htmlFor="pass">Password</label>
                         <div className='pass-field'>
                           <input type={type} placeholder='password'  required autoComplete='off' id="pass" name='password' value={userCreds.password} onChange={handleUserCreds}  />
-                          <button type='button' className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
+                          <button type='button' className='show-pass-icon' onMouseDown={toggleType} onMouseUp={toggleType} onTouchStart={toggleType} onTouchEnd={toggleType} >{ (type==='password') ? <FaEye/> : <FaEyeSlash/> }</button>
                         </div>
                     </div>
 
