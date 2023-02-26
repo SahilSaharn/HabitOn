@@ -33,7 +33,7 @@ function VerifyPage({usedFor}) {
     if(errorData.message){
         addError(errorData.message , errorData.type)
     }
-  } , [errorData , addError]);
+  } , [errorData ]);
 
 
   const verifyCode = async (e) => {
