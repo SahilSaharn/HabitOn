@@ -35,6 +35,6 @@ This is a Full-Stack Mern Stack based application used to track records of your 
 ![Screenshot (478)](https://user-images.githubusercontent.com/95131664/221404319-ca62b7c1-3a1a-41b2-9a7b-1eb64f5eae01.png)
 
 # Authors
-[![LinkedIn ](https://img.shields.io/badge/sahil's-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sahil-saharn/)
-
 [![LinkedIn ](https://img.shields.io/badge/Gurjass's-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gurjaspreet-singh-08995721a/)
+
+[![LinkedIn ](https://img.shields.io/badge/sahil's-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sahil-saharn/)
