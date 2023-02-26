@@ -12,7 +12,7 @@ import HabitPage from './Components/HabitPage';
 import ForgotPassPage from './Components/ForgotPassPage';
 import LogoutPage from './Components/LogoutPage';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence  } from 'framer-motion';
 
 import PageNotFoundPage from './Components/PageNotFoundPage';
 function App() {

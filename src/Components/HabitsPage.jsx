@@ -9,7 +9,7 @@ import TodayScheduleModal from './TodayScheduleModal';
 import DeleteHabitModal from './DeleteHabitModal'
 import Loader from './Loader';
 import axios from 'axios';
-import { useNavigate ,Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AnimatePresence , motion } from 'framer-motion';
 
 
@@ -89,7 +89,7 @@ function HabitsPage() {
 
   const {user ,setUser, theme ,toggleTheme , gotData ,setGotData} = useContext(userContext);
   const {addError} = useContext(ErrorContext);
-  const redirect = useNavigate();
+  // const redirect = useNavigate();
 
   const [showAddHabitModal , setShowAddHabitModal ] = useState( false );
   const [showTodayScheduleModal , setShowTodayScheduleModal] = useState( false );

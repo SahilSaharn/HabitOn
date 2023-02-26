@@ -27,13 +27,13 @@
     font-size: var(--fs-sm);
     margin-block: 0.5rem;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .habit-data-curr-score {
     font-size: var(--fs-md);
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-block: 1rem;
 }
 

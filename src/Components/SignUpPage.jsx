@@ -106,9 +106,9 @@ function SignUpComponent() {
         setShowLoader(false);
     }
 
-    const handleExitComplete = () => {
-        setShowLoader(!showLoader);
-    };
+    // const handleExitComplete = () => {
+    //     setShowLoader(!showLoader);
+    // };
 
     return (
     <>

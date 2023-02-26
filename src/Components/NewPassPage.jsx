@@ -3,7 +3,7 @@ import "../Component_styles/SignInPage_styles.css"
 import userContext from '../Contexts/UserAndThemeContext'
 import ErrorContext from '../Contexts/ErrorContext'
 import Loader from './Loader';
-import {FaEye ,FaEyeSlash ,FaAngleDoubleRight } from "react-icons/fa";
+import {FaEye ,FaEyeSlash  } from "react-icons/fa";
 import pickPassImage from  "../usedImages/newPassImage.svg"
 import {motion  ,AnimatePresence} from 'framer-motion'
 import axios from 'axios';

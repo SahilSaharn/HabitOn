@@ -23,22 +23,22 @@ const leftFadeIn = {
   }
 }
 
-const popUp = {
-  from : {
-    opacity :0,
-    scale : 0
-  },
-  to : {
-    opacity : 1,
-    scale :1,
-    transition : {
-      delay : 1.5,
-      type : "spring",
-      bounce : 0.5,
-      duration : 0.4
-    }
-  }
-}
+// const popUp = {
+//   from : {
+//     opacity :0,
+//     scale : 0
+//   },
+//   to : {
+//     opacity : 1,
+//     scale :1,
+//     transition : {
+//       delay : 1.5,
+//       type : "spring",
+//       bounce : 0.5,
+//       duration : 0.4
+//     }
+//   }
+// }
 
 const imageAnimate = {
   from : {

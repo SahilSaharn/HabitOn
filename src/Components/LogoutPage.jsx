@@ -1,23 +1,23 @@
-import React, {useContext ,useState ,useEffect} from 'react'
+import React, {useContext ,useState } from 'react'
 import '../Component_styles/LogOut_styles.css'
 import userContext from '../Contexts/UserAndThemeContext';
-import ErrorContext from '../Contexts/ErrorContext';
+// import ErrorContext from '../Contexts/ErrorContext';
 import { useNavigate } from 'react-router-dom';
 import { FaPowerOff } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 function LogoutPage() {
 
-  const {addError} = useContext(ErrorContext);
+  // const {addError} = useContext(ErrorContext);
   const {setUser} = useContext(userContext);
 
-  const [errorData , setErrorData] = useState({});
+  // const [errorData , setErrorData] = useState({});
   const redirect = useNavigate()
 
-  useEffect(()=>{ 
-    if(errorData.message){
-        addError(errorData.message , errorData.type)
-    }
-  } , [errorData]);
+  // useEffect(()=>{ 
+  //   if(errorData.message){
+  //       addError(errorData.message , errorData.type)
+  //   }
+  // } , [errorData]);
 
   const logOut = () => {
     sessionStorage.clear()

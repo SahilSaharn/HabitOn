@@ -2,7 +2,7 @@
 .error-cont{
     display: flex;
     width: 340px;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     position: fixed;
     border-radius: 15px;

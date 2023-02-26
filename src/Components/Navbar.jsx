@@ -2,11 +2,10 @@ import React, { useState ,useContext } from 'react'
 import '../Component_styles/Navbar_styles.css'
 import { easeInOut, motion ,AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaHome, FaCompass, FaUserPlus, FaBars ,FaPowerOff, FaTimesCircle ,FaUser ,FaCalendarAlt } from 'react-icons/fa';
+import { FaHome,  FaUserPlus, FaBars ,FaPowerOff, FaTimesCircle  ,FaCalendarAlt } from 'react-icons/fa';
 import Mobilenav from './Mobilenav';
 import userContext from '../Contexts/UserAndThemeContext';
 import '../Component_styles/Navbar_styles.css';
-import userEvent from '@testing-library/user-event';
 function Navbar() {
 
   const {user , theme} = useContext(userContext);

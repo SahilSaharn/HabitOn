@@ -2,7 +2,7 @@ import React , {useContext} from 'react'
 import "../Component_styles/Mobilenav.css"
 import userContext from '../Contexts/UserAndThemeContext';
 import { motion } from 'framer-motion';
-import { FaHome, FaCompass, FaUserPlus ,FaUser ,FaCalendarAlt } from 'react-icons/fa';
+import { FaHome, FaUserPlus ,FaUser ,FaCalendarAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 function Mobilenav(props) {
