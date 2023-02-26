@@ -143,7 +143,7 @@ function HabitPageComponent (){
   }
   
   return (
-    <motion.div style = {{ backgroundColor : theme ? '#f9f9f9' : '#0a1931' ,padding:'.1px' }}
+    <motion.div className='main-habit-cont' style = {{ backgroundColor : theme ? '#f9f9f9' : '#0a1931' ,padding:'.1px'  }}
       initial = {{opacity : 0}}
       animate = {{opacity : 1}}
       exit = {{x : 1100, opacity : 0}}

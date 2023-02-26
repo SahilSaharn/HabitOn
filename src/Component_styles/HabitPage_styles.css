@@ -1,3 +1,8 @@
+.main-habit-cont{
+    height: 100vh;
+    overflow-y: auto;
+}
+
 .habit-data-cont {
     margin-top: clamp(6rem, 10vw, 12rem);
     padding: 0px clamp(0.5rem, 5vw, 4rem);
